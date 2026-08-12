@@ -1,5 +1,4 @@
-# sadrik-client
-fabric 1.21.11 cheat client (base rich)
+# cheese-client
+fabric 1.21.11 xxs client
 
-прошу бога простить за этот гпткод
-мне стыдно за этот шиткод
+恭喜你！中大奖了！
