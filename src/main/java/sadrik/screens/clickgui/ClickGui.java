@@ -10,8 +10,8 @@ import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 import sadrik.IMinecraft;
 import sadrik.Initialization;
-import sadrik.modules.module.category.ModuleCategory;
 import sadrik.modules.module.ModuleStructure;
+import sadrik.modules.module.category.ModuleCategory;
 import sadrik.screens.clickgui.impl.DragHandler;
 import sadrik.screens.clickgui.impl.autobuy.autobuyui.AutoBuyRenderer;
 import sadrik.screens.clickgui.impl.background.BackgroundComponent;
@@ -24,8 +24,8 @@ import sadrik.util.animations.GuiAnimation;
 import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.math.FrameRateCounter;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.gif.GifRender;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -93,7 +93,8 @@ public class ClickGui extends Screen implements IMinecraft {
                     if (m.getCategory() == selectedCategory) modules.add(m);
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         moduleComponent.updateModules(modules, selectedCategory);
     }
 
@@ -152,7 +153,7 @@ public class ClickGui extends Screen implements IMinecraft {
     }
 
     private boolean isModuleCategory(ModuleCategory category) {
-        return category != ModuleCategory.AUTOBUY ;
+        return category != ModuleCategory.AUTOBUY;
     }
 
     @Override
@@ -539,7 +540,8 @@ public class ClickGui extends Screen implements IMinecraft {
         }
 
         for (AbstractSettingComponent c : moduleComponent.getSettingComponents()) {
-            if (c.getSetting().isVisible() && c.keyPressed(input.key(), input.scancode(), input.modifiers())) return true;
+            if (c.getSetting().isVisible() && c.keyPressed(input.key(), input.scancode(), input.modifiers()))
+                return true;
         }
 
         return super.keyPressed(input);

@@ -22,9 +22,11 @@ public class MathAngle implements IMinecraft {
     public Angle fromVec2f(Vec2f vector2f) {
         return new Angle(vector2f.y, vector2f.x);
     }
+
     public static float computeAngleDifference(float a, float b) {
         return MathHelper.wrapDegrees(a - b);
     }
+
     public Angle fromVec3d(Vec3d vector) {
         return new Angle((float) wrapDegrees(toDegrees(Math.atan2(vector.z, vector.x)) - 90), (float) wrapDegrees(toDegrees(-Math.atan2(vector.y, hypot(vector.x, vector.z)))));
     }
@@ -43,7 +45,9 @@ public class MathAngle implements IMinecraft {
         return new Angle(mc.player.getYaw(), pitch);
     }
 
-    public Angle cameraAngle() {return new Angle(mc.player.getYaw(), mc.player.getPitch());}
+    public Angle cameraAngle() {
+        return new Angle(mc.player.getYaw(), mc.player.getPitch());
+    }
 
 
     public static boolean rayTrace(float yaw, float pitch, float distance, float wallDistance, Entity entity) {

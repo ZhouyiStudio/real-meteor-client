@@ -70,7 +70,8 @@ public class StaffCommand extends Command {
                 if (args.length > 1) {
                     try {
                         page = Integer.parseInt(args[1]);
-                    } catch (NumberFormatException ignored) {}
+                    } catch (NumberFormatException ignored) {
+                    }
                 }
 
                 List<String> staff = StaffUtils.getStaffNames();

@@ -125,18 +125,18 @@ public class MoveUtil implements IMinecraft {
     }
 
     public static final float moveYaw(float entityYaw) {
-        return entityYaw + (float)(!a() || !d() || w() && s() || !w() && !s() ? (w() && s() && (!a() || !d()) && (a() || d()) ? (a() ? -90 : (d() ? 90 : 0)) : (a() && d() && (!w() || !s()) || w() && s() && (!a() || !d()) ? 0 : (!a() && !d() && !s() ? 0 : (w() && !s() ? 45 : (s() && !w() ? (!a() && !d() ? 180 : 135) : ((w() || s()) && (!w() || !s()) ? 0 : 90))) * (a() ? -1 : 1)))) : (w() ? 0 : (s() ? 180 : 0)));
+        return entityYaw + (float) (!a() || !d() || w() && s() || !w() && !s() ? (w() && s() && (!a() || !d()) && (a() || d()) ? (a() ? -90 : (d() ? 90 : 0)) : (a() && d() && (!w() || !s()) || w() && s() && (!a() || !d()) ? 0 : (!a() && !d() && !s() ? 0 : (w() && !s() ? 45 : (s() && !w() ? (!a() && !d() ? 180 : 135) : ((w() || s()) && (!w() || !s()) ? 0 : 90))) * (a() ? -1 : 1)))) : (w() ? 0 : (s() ? 180 : 0)));
     }
 
     public static float calculateBodyYaw(float yaw, float prevBodyYaw, double prevX, double prevZ, double currentX, double currentZ, float handSwingProgress) {
         double motionX = currentX - prevX;
         double motionZ = currentZ - prevZ;
-        float motionSquared = (float)(motionX * motionX + motionZ * motionZ);
+        float motionSquared = (float) (motionX * motionX + motionZ * motionZ);
         float bodyYaw = prevBodyYaw;
         float swing = mc.player.handSwingProgress;
 
         if (motionSquared > 0.0025000002F) {
-            float movementYaw = (float) MathHelper.atan2(motionZ, motionX) * (180F / (float)Math.PI) - 90.0F;
+            float movementYaw = (float) MathHelper.atan2(motionZ, motionX) * (180F / (float) Math.PI) - 90.0F;
             float yawDiff = MathHelper.abs(MathHelper.wrapDegrees(yaw) - movementYaw);
             if (95.0F < yawDiff && yawDiff < 265.0F) {
                 bodyYaw = movementYaw - 180.0F;
@@ -155,7 +155,7 @@ public class MoveUtil implements IMinecraft {
         float yawOffsetDiff = MathHelper.wrapDegrees(yaw - bodyYaw);
         float maxHeadRotation = 52.0F;
         if (Math.abs(yawOffsetDiff) > maxHeadRotation) {
-            bodyYaw += yawOffsetDiff - (float)MathHelper.sign((double)yawOffsetDiff) * maxHeadRotation;
+            bodyYaw += yawOffsetDiff - (float) MathHelper.sign((double) yawOffsetDiff) * maxHeadRotation;
         }
 
         return bodyYaw;

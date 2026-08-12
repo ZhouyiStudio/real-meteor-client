@@ -11,8 +11,6 @@ import sadrik.modules.module.setting.implement.BooleanSetting;
 import sadrik.util.string.chat.ChatMessage;
 import sadrik.util.timer.TimerUtil;
 
-import static sadrik.IMinecraft.mc;
-
 public class AutoResell extends ModuleStructure {
 
     private static AutoResell instance;

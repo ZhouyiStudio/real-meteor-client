@@ -13,7 +13,8 @@ public class AutoParserConfig {
     private volatile boolean isRunning = false;
     private boolean debugMode = false;
 
-    private AutoParserConfig() {}
+    private AutoParserConfig() {
+    }
 
     public static AutoParserConfig getInstance() {
         if (instance == null) {

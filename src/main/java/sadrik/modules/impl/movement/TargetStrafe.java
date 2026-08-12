@@ -13,7 +13,9 @@ import sadrik.modules.impl.combat.AutoTotem;
 import sadrik.modules.impl.combat.aura.AngleConnection;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.modules.module.category.ModuleCategory;
-import sadrik.modules.module.setting.implement.*;
+import sadrik.modules.module.setting.implement.MultiSelectSetting;
+import sadrik.modules.module.setting.implement.SelectSetting;
+import sadrik.modules.module.setting.implement.SliderSettings;
 import sadrik.util.Instance;
 
 public class TargetStrafe extends ModuleStructure {
@@ -170,17 +172,21 @@ public class TargetStrafe extends ModuleStructure {
         if (angleDiff >= -22.5 && angleDiff < 22.5) {
             forward = true;
         } else if (angleDiff >= 22.5 && angleDiff < 67.5) {
-            forward = true; right = true;
+            forward = true;
+            right = true;
         } else if (angleDiff >= 67.5 && angleDiff < 112.5) {
             right = true;
         } else if (angleDiff >= 112.5 && angleDiff < 157.5) {
-            back = true; right = true;
+            back = true;
+            right = true;
         } else if (angleDiff >= -67.5 && angleDiff < -22.5) {
-            forward = true; left = true;
+            forward = true;
+            left = true;
         } else if (angleDiff >= -112.5 && angleDiff < -67.5) {
             left = true;
         } else if (angleDiff >= -157.5 && angleDiff < -112.5) {
-            back = true; left = true;
+            back = true;
+            left = true;
         } else {
             back = true;
         }

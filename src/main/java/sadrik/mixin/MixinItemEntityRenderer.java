@@ -1,6 +1,5 @@
 package sadrik.mixin;
 
-import net.minecraft.client.item.ItemModelManager;
 import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.ItemEntityRenderer;
 import net.minecraft.client.render.entity.state.ItemEntityRenderState;
@@ -8,7 +7,6 @@ import net.minecraft.client.render.entity.state.ItemStackEntityRenderState;
 import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.random.Random;

@@ -5,7 +5,10 @@ import lombok.Setter;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.util.interfaces.AbstractSettingComponent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter

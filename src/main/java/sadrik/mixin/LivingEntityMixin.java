@@ -31,19 +31,32 @@ import java.lang.reflect.Method;
 public abstract class LivingEntityMixin {
     @Shadow
     public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
-    @Shadow @Nullable
-    public abstract StatusEffectInstance getStatusEffect(RegistryEntry<StatusEffect> effect);
-    @Shadow public float bodyYaw;
-    @Shadow public abstract boolean isInSwimmingPose();
-    @Shadow protected abstract double getEffectiveGravity();
-    @Unique private final MinecraftClient client = MinecraftClient.getInstance();
 
-    @Unique private static boolean baritoneChecked = false;
-    @Unique private static boolean baritoneAvailable = false;
-    @Unique private static Method getProviderMethod;
-    @Unique private static Method getPrimaryBaritoneMethod;
-    @Unique private static Method getPathingBehaviorMethod;
-    @Unique private static Method isPathingMethod;
+    @Shadow
+    @Nullable
+    public abstract StatusEffectInstance getStatusEffect(RegistryEntry<StatusEffect> effect);
+
+    @Shadow
+    public float bodyYaw;
+
+    @Shadow
+    public abstract boolean isInSwimmingPose();
+
+    @Shadow
+    protected abstract double getEffectiveGravity();
+
+    @Unique
+    private static boolean baritoneChecked = false;
+    @Unique
+    private static boolean baritoneAvailable = false;
+    @Unique
+    private static Method getProviderMethod;
+    @Unique
+    private static Method getPrimaryBaritoneMethod;
+    @Unique
+    private static Method getPathingBehaviorMethod;
+    @Unique
+    private static Method isPathingMethod;
 
     @Unique
     private boolean isBaritonePathing() {
@@ -97,7 +110,7 @@ public abstract class LivingEntityMixin {
 
     @ModifyExpressionValue(method = "jump", at = @At(value = "NEW", target = "(DDD)Lnet/minecraft/util/math/Vec3d;"))
     private Vec3d hookFixRotation(Vec3d original) {
-        if ((Object) this != client.player) {
+        if ((Object) this != MinecraftClient.getInstance().player) {
             return original;
         }
         if (isBaritonePathing()) {
@@ -124,22 +137,24 @@ public abstract class LivingEntityMixin {
 
     @Inject(method = "getHandSwingDuration", at = @At("HEAD"), cancellable = true)
     private void swingProgressHook(CallbackInfoReturnable<Integer> cir) {
-        if ((Object) this != client.player) {
+        if ((Object) this != MinecraftClient.getInstance().player) {
             return;
         }
         SwingDurationEvent event = new SwingDurationEvent();
         EventManager.callEvent(event);
         if (event.isCancelled()) {
             float animation = event.getAnimation();
-            if (StatusEffectUtil.hasHaste(client.player)) animation *= (6 - (1 + StatusEffectUtil.getHasteAmplifier(client.player)));
-            else animation *= (hasStatusEffect(StatusEffects.MINING_FATIGUE) ? 6 + (1 + getStatusEffect(StatusEffects.MINING_FATIGUE).getAmplifier()) * 2 : 6);
+            if (StatusEffectUtil.hasHaste(MinecraftClient.getInstance().player))
+                animation *= (6 - (1 + StatusEffectUtil.getHasteAmplifier(MinecraftClient.getInstance().player)));
+            else
+                animation *= (hasStatusEffect(StatusEffects.MINING_FATIGUE) ? 6 + (1 + getStatusEffect(StatusEffects.MINING_FATIGUE).getAmplifier()) * 2 : 6);
             cir.setReturnValue((int) animation);
         }
     }
 
     @Inject(method = "calcGlidingVelocity", at = @At("HEAD"), cancellable = true)
     private void calcGlidingVelocityFull(Vec3d oldVelocity, CallbackInfoReturnable<Vec3d> cir) {
-        if ((Object) this != client.player) {
+        if ((Object) this != MinecraftClient.getInstance().player) {
             return;
         }
         if (isBaritonePathing()) {

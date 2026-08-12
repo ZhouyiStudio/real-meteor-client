@@ -3,8 +3,14 @@ package sadrik.util.modules.autobuy;
 import net.minecraft.client.MinecraftClient;
 import sadrik.util.string.chat.ChatMessage;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -40,7 +46,10 @@ public class NetworkManager {
                 this.out = new PrintWriter(socket.getOutputStream(), true);
                 this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             } catch (IOException e) {
-                try { socket.close(); } catch (IOException ignored) {}
+                try {
+                    socket.close();
+                } catch (IOException ignored) {
+                }
                 throw e;
             }
         }
@@ -48,9 +57,18 @@ public class NetworkManager {
         void close() {
             if (closed) return;
             closed = true;
-            try { in.close(); } catch (Exception ignored) {}
-            try { out.close(); } catch (Exception ignored) {}
-            try { socket.close(); } catch (Exception ignored) {}
+            try {
+                in.close();
+            } catch (Exception ignored) {
+            }
+            try {
+                out.close();
+            } catch (Exception ignored) {
+            }
+            try {
+                socket.close();
+            } catch (Exception ignored) {
+            }
         }
 
         void send(String message) {
@@ -227,7 +245,8 @@ public class NetworkManager {
                     int minQuantity = Integer.parseInt(parts[6]);
                     buyQueue.add(new BuyRequest(price, itemId, displayName, count, loreHash, maxPrice, minQuantity));
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         } else if (line.equals("ENTER_AUCTION")) {
             if (!handler.inAuction) {
                 handler.inAuction = true;
@@ -279,7 +298,8 @@ public class NetworkManager {
             try {
                 out.println("BUY:" + price + "|||" + itemId + "|||" + displayName + "|||" + count + "|||" + loreHash + "|||" + maxPrice + "|||" + minQuantity);
                 out.flush();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 
@@ -295,7 +315,8 @@ public class NetworkManager {
             try {
                 out.println(msg);
                 out.flush();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
         for (ClientHandler handler : clients) {
             handler.send(msg);
@@ -307,7 +328,8 @@ public class NetworkManager {
             try {
                 out.println("ENTER_AUCTION");
                 out.flush();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 
@@ -316,7 +338,8 @@ public class NetworkManager {
             try {
                 out.println("LEAVE_AUCTION");
                 out.flush();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 
@@ -357,16 +380,28 @@ public class NetworkManager {
         in = null;
         clientSocket = null;
 
-        try { if (tempIn != null) tempIn.close(); } catch (Exception ignored) {}
-        try { if (tempOut != null) tempOut.close(); } catch (Exception ignored) {}
-        try { if (tempClient != null) tempClient.close(); } catch (Exception ignored) {}
+        try {
+            if (tempIn != null) tempIn.close();
+        } catch (Exception ignored) {
+        }
+        try {
+            if (tempOut != null) tempOut.close();
+        } catch (Exception ignored) {
+        }
+        try {
+            if (tempClient != null) tempClient.close();
+        } catch (Exception ignored) {
+        }
     }
 
     private void closeServerSocket() {
         ServerSocket temp = serverSocket;
         serverSocket = null;
         if (temp != null) {
-            try { temp.close(); } catch (Exception ignored) {}
+            try {
+                temp.close();
+            } catch (Exception ignored) {
+            }
         }
     }
 
@@ -395,7 +430,8 @@ public class NetworkManager {
             temp.shutdownNow();
             try {
                 temp.awaitTermination(500, TimeUnit.MILLISECONDS);
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+            }
         }
     }
 
@@ -407,6 +443,9 @@ public class NetworkManager {
     }
 
     private void sleep(long ms) {
-        try { Thread.sleep(ms); } catch (InterruptedException ignored) {}
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException ignored) {
+        }
     }
 }

@@ -29,7 +29,7 @@ public class ClientPlayerInteractionManagerMixin {
         }
     }
 
-    @Inject(method = "stopUsingItem", at = @At("HEAD"),cancellable = true)
+    @Inject(method = "stopUsingItem", at = @At("HEAD"), cancellable = true)
     public void stopUsingItemHook(CallbackInfo ci) {
         UsingItemEvent event = new UsingItemEvent(EventType.POST);
         EventManager.callEvent(event);
@@ -49,7 +49,7 @@ public class ClientPlayerInteractionManagerMixin {
 
     @Inject(method = "clickSlot", at = @At("HEAD"), cancellable = true)
     public void clickSlotHook(int syncId, int slotId, int button, SlotActionType actionType, PlayerEntity player, CallbackInfo info) {
-        ClickSlotEvent event = new ClickSlotEvent(syncId,slotId,button,actionType);
+        ClickSlotEvent event = new ClickSlotEvent(syncId, slotId, button, actionType);
         EventManager.callEvent(event);
         if (event.isCancelled()) info.cancel();
     }

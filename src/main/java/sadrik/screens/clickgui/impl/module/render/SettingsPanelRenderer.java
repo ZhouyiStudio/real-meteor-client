@@ -9,8 +9,8 @@ import sadrik.screens.clickgui.impl.settingsrender.MultiSelectComponent;
 import sadrik.screens.clickgui.impl.settingsrender.SelectComponent;
 import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.ArrayList;

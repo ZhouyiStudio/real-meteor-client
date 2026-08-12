@@ -1,5 +1,7 @@
 package sadrik.modules.impl.render;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
@@ -24,11 +26,9 @@ import sadrik.modules.module.setting.implement.SliderSettings;
 import sadrik.util.animations.Animation;
 import sadrik.util.animations.Direction;
 import sadrik.util.animations.OutBack;
-import sadrik.util.render.сliemtpipeline.ClientPipelines;
 import sadrik.util.render.Render3D;
+import sadrik.util.render.сliemtpipeline.ClientPipelines;
 import sadrik.util.timer.StopWatch;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -191,7 +191,7 @@ public class TargetESP extends ModuleStructure implements IMinecraft {
     }
 
     private void renderChain(MatrixStack stack, VertexConsumerProvider provider, LivingEntity target, float alpha,
-            float deltaTime) {
+                             float deltaTime) {
         VertexConsumer consumer = provider
                 .getBuffer(ClientPipelines.CHAIN_ESP.apply(Identifier.of("sadrik", "images/world/chain.png")));
 
@@ -305,7 +305,7 @@ public class TargetESP extends ModuleStructure implements IMinecraft {
     }
 
     private void particle(MatrixStack stack, VertexConsumer consumer, Transformation transformation, float alpha,
-            int colorIndex) {
+                          int colorIndex) {
         double radius = 0.7f;
         double distance = 11;
 
@@ -374,7 +374,7 @@ public class TargetESP extends ModuleStructure implements IMinecraft {
     }
 
     private void renderCrystals(MatrixStack stack, VertexConsumerProvider provider, LivingEntity target, float alpha,
-            float deltaTime) {
+                                float deltaTime) {
         if (target == null || crystalList.isEmpty()) {
             return;
         }
@@ -443,7 +443,7 @@ public class TargetESP extends ModuleStructure implements IMinecraft {
         }
 
         private void drawFilledCrystal(MatrixStack stack, VertexConsumer consumer, int baseColor, float alphaMultiplier,
-                float anim) {
+                                       float anim) {
             float s = 0.05f;
             float h_prism = s * 1.0f;
             float h_pyramid = s * 1.5f;
@@ -498,7 +498,7 @@ public class TargetESP extends ModuleStructure implements IMinecraft {
         }
 
         private void drawTriangleFilled(Matrix4f matrix, VertexConsumer consumer, Vector3f v1, Vector3f v2, Vector3f v3,
-                int color) {
+                                        int color) {
             consumer.vertex(matrix, v1.x, v1.y, v1.z).color(color);
             consumer.vertex(matrix, v2.x, v2.y, v2.z).color(color);
             consumer.vertex(matrix, v3.x, v3.y, v3.z).color(color);
@@ -506,7 +506,7 @@ public class TargetESP extends ModuleStructure implements IMinecraft {
         }
 
         private void drawQuadFilled(Matrix4f matrix, VertexConsumer consumer, Vector3f v1, Vector3f v2, Vector3f v3,
-                Vector3f v4, int color) {
+                                    Vector3f v4, int color) {
             consumer.vertex(matrix, v1.x, v1.y, v1.z).color(color);
             consumer.vertex(matrix, v2.x, v2.y, v2.z).color(color);
             consumer.vertex(matrix, v3.x, v3.y, v3.z).color(color);

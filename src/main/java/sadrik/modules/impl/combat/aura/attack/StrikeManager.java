@@ -447,7 +447,7 @@ public class StrikeManager implements IMinecraft {
     }
 
     public boolean shouldResetSprintingForTrigger(StrikerConstructor.AttackPerpetratorConfigurable config,
-            TriggerBot triggerBot) {
+                                                  TriggerBot triggerBot) {
         if (triggerBot.target == null)
             return false;
         if (shouldWaitForEating())

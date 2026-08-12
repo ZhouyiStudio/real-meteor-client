@@ -20,20 +20,24 @@ public class ProxyConfig {
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private final Path configPath;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private boolean proxyEnabled = false;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private Proxy defaultProxy = new Proxy();
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private Proxy lastUsedProxy = new Proxy();
 
     private ProxyConfig() {
         Path configDir = Paths.get("Sadrik", "configs", "proxy");
         try {
             Files.createDirectories(configDir);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         configPath = configDir.resolve("proxy.json");
     }
 
@@ -110,7 +114,8 @@ public class ProxyConfig {
         if (json.has("type")) {
             try {
                 proxy.type = Proxy.ProxyType.valueOf(json.get("type").getAsString());
-            } catch (IllegalArgumentException ignored) {}
+            } catch (IllegalArgumentException ignored) {
+            }
         }
         if (json.has("username")) {
             proxy.username = json.get("username").getAsString();

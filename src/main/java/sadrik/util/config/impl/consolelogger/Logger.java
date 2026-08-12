@@ -1,8 +1,8 @@
 package sadrik.util.config.impl.consolelogger;
 
 /**
- *  © 2026 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2026 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 public class Logger {

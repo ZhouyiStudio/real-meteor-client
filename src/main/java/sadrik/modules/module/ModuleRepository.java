@@ -3,8 +3,6 @@ package sadrik.modules.module;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import sadrik.modules.impl.combat.*;
-import sadrik.modules.impl.combat.NoInteract;
-import sadrik.modules.impl.combat.AutoTotem;
 import sadrik.modules.impl.misc.*;
 import sadrik.modules.impl.misc.autoparser.AutoParser;
 import sadrik.modules.impl.movement.*;

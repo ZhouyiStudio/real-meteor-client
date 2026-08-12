@@ -19,7 +19,9 @@ import sadrik.modules.module.setting.implement.SelectSetting;
 import sadrik.util.string.chat.ChatMessage;
 import sadrik.util.timer.StopWatch;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -229,8 +231,8 @@ public class EventFinder extends ModuleStructure {
             scanCompleted = true;
 
             long totalResponses = results.values().stream()
-                .filter(info -> info.getTotalSeconds() >= 0)
-                .count();
+                    .filter(info -> info.getTotalSeconds() >= 0)
+                    .count();
 
             if (totalResponses < 1) {
                 pendingMessage = "§cИвенты не найдены";

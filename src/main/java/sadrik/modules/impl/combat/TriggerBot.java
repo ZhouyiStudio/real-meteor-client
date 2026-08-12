@@ -148,8 +148,10 @@ public class TriggerBot extends ModuleStructure {
     }
 
     @EventHandler
-    public void tick(TickEvent e) {}
+    public void tick(TickEvent e) {
+    }
 
     @EventHandler
-    public void onPacket(PacketEvent e) {}
+    public void onPacket(PacketEvent e) {
+    }
 }

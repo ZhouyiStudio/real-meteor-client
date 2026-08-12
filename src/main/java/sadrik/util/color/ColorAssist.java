@@ -1,37 +1,35 @@
 package sadrik.util.color;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.chars.Char2IntArrayMap;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.UtilityClass;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
-import org.joml.Vector4i;
-import org.lwjgl.opengl.GL11;
 import sadrik.util.math.MathUtils;
 
 import java.awt.*;
-import java.nio.ByteBuffer;
 import java.util.concurrent.*;
-import java.util.regex.Pattern;
 
 @Getter
 @UtilityClass
 public class ColorAssist {
     public static int colorForRectsCustom$() {
-        return new Color(91, 63, 212,255).getRGB();
+        return new Color(91, 63, 212, 255).getRGB();
     }
+
     public static int colorForRectsBlack$() {
-        return new Color(26, 26, 26,255).getRGB();
+        return new Color(26, 26, 26, 255).getRGB();
     }
+
     public static int colorForTextWhite$() {
-        return new Color(255,255,255,255).getRGB();
+        return new Color(255, 255, 255, 255).getRGB();
     }
+
     public static int colorForTextCustom$() {
-        return  new Color(130, 100, 210,255).getRGB();
+        return new Color(130, 100, 210, 255).getRGB();
     }
+
     public static final int green = new Color(64, 255, 64).getRGB();
     public static final int yellow = new Color(255, 255, 64).getRGB();
     public static final int orange = new Color(255, 128, 32).getRGB();
@@ -58,7 +56,9 @@ public class ColorAssist {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-    public int red(int c) {return (c >> 16) & 0xFF;}
+    public int red(int c) {
+        return (c >> 16) & 0xFF;
+    }
 
     public int green(int c) {
         return (c >> 8) & 0xFF;
@@ -199,7 +199,7 @@ public class ColorAssist {
     }
 
     public int multRedAndAlpha(int color, float red, float alpha) {
-        return getColor(red(color),Math.min(255, Math.round(green(color) / red)), Math.min(255, Math.round(blue(color) / red)), Math.round(alpha(color) * alpha));
+        return getColor(red(color), Math.min(255, Math.round(green(color) / red)), Math.min(255, Math.round(blue(color) / red)), Math.round(alpha(color) * alpha));
     }
 
     public int rgba(int red, int green, int blue, int alpha) {

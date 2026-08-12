@@ -75,7 +75,7 @@ public class ButtonComponent extends AbstractSettingComponent {
             wasPressed = false;
         }
 
-        int iconAlpha = (int)(200 * alphaMultiplier);
+        int iconAlpha = (int) (200 * alphaMultiplier);
         Fonts.GUI_ICONS.draw("U", x + 0.5f, y + height / 2 - 12f, 13, new Color(210, 210, 210, iconAlpha).getRGB());
 
         Fonts.BOLD.draw(buttonSetting.getName(), x + 9.5f, y + height / 2 - 7.5f, 6, applyAlpha(new Color(210, 210, 220, 200)).getRGB());
@@ -100,8 +100,8 @@ public class ButtonComponent extends AbstractSettingComponent {
         float pressOffset = pressAnimation * 1f;
         scaledY += pressOffset;
 
-        int bgAlpha = clamp((int)((30 + hoverAnimation * 20 + pressAnimation * 15) * alphaMultiplier));
-        int bgGray = clamp((int)(35 + hoverAnimation * 15 + pressAnimation * 20));
+        int bgAlpha = clamp((int) ((30 + hoverAnimation * 20 + pressAnimation * 15) * alphaMultiplier));
+        int bgGray = clamp((int) (35 + hoverAnimation * 15 + pressAnimation * 20));
         Color bgColor = new Color(bgGray, bgGray, bgGray, bgAlpha);
 
         Render2D.rect(scaledX, scaledY, scaledWidth, scaledHeight, bgColor.getRGB(), 4f);
@@ -110,7 +110,7 @@ public class ButtonComponent extends AbstractSettingComponent {
             float currentRippleSize = 20 * rippleAnimation;
             float rippleAlpha = (1f - rippleAnimation) * 0.4f;
 
-            int rippleAlphaInt = clamp((int)(255 * rippleAlpha * alphaMultiplier));
+            int rippleAlphaInt = clamp((int) (255 * rippleAlpha * alphaMultiplier));
 
             float localRippleX = rippleX - scaledX;
             float localRippleY = rippleY - scaledY;
@@ -124,8 +124,8 @@ public class ButtonComponent extends AbstractSettingComponent {
             );
         }
 
-        int outlineAlpha = clamp((int)((60 + hoverAnimation * 60 + pressAnimation * 40) * alphaMultiplier));
-        int outlineGray = clamp((int)(80 + hoverAnimation * 40 + pressAnimation * 30));
+        int outlineAlpha = clamp((int) ((60 + hoverAnimation * 60 + pressAnimation * 40) * alphaMultiplier));
+        int outlineGray = clamp((int) (80 + hoverAnimation * 40 + pressAnimation * 30));
         Color outlineColor = new Color(outlineGray, outlineGray, outlineGray, outlineAlpha);
         Render2D.outline(scaledX, scaledY, scaledWidth, scaledHeight, 0.5f, outlineColor.getRGB(), 4f);
 
@@ -148,16 +148,16 @@ public class ButtonComponent extends AbstractSettingComponent {
         float textX = startX + iconSize;
         float textY = buttonY + buttonHeight / 2 - 3f;
 
-        int textAlpha = clamp((int)((180 + hoverAnimation * 50 + pressAnimation * 25) * alphaMultiplier));
-        int textGray = clamp((int)(180 + hoverAnimation * 40 + pressAnimation * 30));
+        int textAlpha = clamp((int) ((180 + hoverAnimation * 50 + pressAnimation * 25) * alphaMultiplier));
+        int textGray = clamp((int) (180 + hoverAnimation * 40 + pressAnimation * 30));
         Color textColor = new Color(textGray, textGray, textGray, textAlpha);
 
         Fonts.BOLD.draw(buttonText, textX, textY, 5, textColor.getRGB());
     }
 
     private void renderPlayIcon(float iconX, float iconY, float size) {
-        int iconAlpha = clamp((int)((160 + hoverAnimation * 60 + pressAnimation * 35) * alphaMultiplier));
-        int iconGray = clamp((int)(170 + hoverAnimation * 50 + pressAnimation * 30));
+        int iconAlpha = clamp((int) ((160 + hoverAnimation * 60 + pressAnimation * 35) * alphaMultiplier));
+        int iconGray = clamp((int) (170 + hoverAnimation * 50 + pressAnimation * 30));
         Color iconColor = new Color(iconGray, iconGray, iconGray, iconAlpha);
 
         float triangleWidth = size * 0.8f;

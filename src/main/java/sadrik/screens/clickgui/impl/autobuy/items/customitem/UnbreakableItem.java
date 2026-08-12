@@ -71,7 +71,8 @@ public class UnbreakableItem implements AutoBuyableItem {
                     builder.add(vanishingOpt.get(), 1);
                 }
                 stack.set(DataComponentTypes.ENCHANTMENTS, builder.build());
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
         if (loreTexts != null && !loreTexts.isEmpty()) {
             stack.set(DataComponentTypes.LORE, new LoreComponent(loreTexts));

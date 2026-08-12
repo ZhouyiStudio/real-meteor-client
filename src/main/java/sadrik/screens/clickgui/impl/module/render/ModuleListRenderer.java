@@ -8,8 +8,8 @@ import sadrik.screens.clickgui.impl.module.handler.ModuleBindHandler;
 import sadrik.screens.clickgui.impl.module.handler.ModuleScrollHandler;
 import sadrik.screens.clickgui.impl.module.util.ModuleDisplayHelper;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.List;

@@ -18,7 +18,7 @@ public class NameProtect extends ModuleStructure {
     BooleanSetting friendsSetting = new BooleanSetting("Друзья", "Скрывает никнеймы друзей").setValue(true);
 
     public NameProtect() {
-        super("NameProtect","Name Protect", ModuleCategory.PLAYER);
+        super("NameProtect", "Name Protect", ModuleCategory.PLAYER);
         settings(friendsSetting);
     }
 

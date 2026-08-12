@@ -4,16 +4,12 @@ import net.minecraft.client.gui.DrawContext;
 import sadrik.modules.module.setting.implement.MultiSelectSetting;
 import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
 
 public class MultiSelectComponent extends AbstractSettingComponent {
     private final MultiSelectSetting multiSelectSetting;
@@ -212,10 +208,10 @@ public class MultiSelectComponent extends AbstractSettingComponent {
         float boxY = y + height / 2 - 5;
         float boxHeight = 10f;
 
-        int bgAlpha = 25 + (int)(hoverAnimation * 15);
+        int bgAlpha = 25 + (int) (hoverAnimation * 15);
         Render2D.rect(boxX, boxY, BOX_WIDTH, boxHeight, applyAlpha(new Color(55, 55, 55, bgAlpha)).getRGB(), 3f);
 
-        int outlineAlpha = 60 + (int)(hoverAnimation * 40);
+        int outlineAlpha = 60 + (int) (hoverAnimation * 40);
         Render2D.outline(boxX, boxY, BOX_WIDTH, boxHeight, 0.5f, applyAlpha(new Color(155, 155, 155, outlineAlpha)).getRGB(), 3f);
 
         renderSelectedText(boxX, boxY, BOX_WIDTH, boxHeight, deltaTime);
@@ -228,7 +224,7 @@ public class MultiSelectComponent extends AbstractSettingComponent {
     }
 
     private void renderArrowIcon(float iconX, float iconY) {
-        int arrowAlpha = 120 + (int)(hoverAnimation * 60);
+        int arrowAlpha = 120 + (int) (hoverAnimation * 60);
 
         float centerX = iconX + 4f;
         float centerY = iconY + 4f;
@@ -307,10 +303,10 @@ public class MultiSelectComponent extends AbstractSettingComponent {
         float availableWidth = boxWidth - 4;
         float baseX = boxX + 4;
 
-        Scissor.enable(boxX + 1, boxY, availableWidth + 2, boxHeight,2 );
+        Scissor.enable(boxX + 1, boxY, availableWidth + 2, boxHeight, 2);
 
         if (noneAlphaAnimation > 0.01f) {
-            int noneAlpha = (int)(200 * noneAlphaAnimation * alphaMultiplier);
+            int noneAlpha = (int) (200 * noneAlphaAnimation * alphaMultiplier);
             Fonts.BOLD.draw("None", baseX, textY, 5, new Color(160, 160, 165, noneAlpha).getRGB());
         }
 
@@ -363,7 +359,7 @@ public class MultiSelectComponent extends AbstractSettingComponent {
 
             float renderX = baseX + itemX - currentScroll;
 
-            int alpha = (int)(200 * itemAlpha * alphaMultiplier);
+            int alpha = (int) (200 * itemAlpha * alphaMultiplier);
             if (alpha > 0) {
                 Fonts.BOLD.draw(displayText, renderX, textY, 5, new Color(160, 160, 165, alpha).getRGB());
             }
@@ -415,15 +411,15 @@ public class MultiSelectComponent extends AbstractSettingComponent {
 
         float panelAlpha = expandAnimation * alphaMultiplier;
 
-        int panelBgAlpha = (int)(200 * panelAlpha);
+        int panelBgAlpha = (int) (200 * panelAlpha);
         Render2D.rect(boxX, startY, BOX_WIDTH, visibleHeight, new Color(30, 30, 30, panelBgAlpha).getRGB(), 3f);
 
-        int panelOutlineAlpha = (int)(100 * panelAlpha);
+        int panelOutlineAlpha = (int) (100 * panelAlpha);
         Render2D.outline(boxX, startY, BOX_WIDTH, visibleHeight, 0.5f, new Color(80, 80, 85, panelOutlineAlpha).getRGB(), 3f);
 
         if (visibleHeight < 1f) return;
 
-        Scissor.enable(boxX, startY, BOX_WIDTH, visibleHeight,2);
+        Scissor.enable(boxX, startY, BOX_WIDTH, visibleHeight, 2);
 
         float optionY = startY;
 
@@ -444,7 +440,7 @@ public class MultiSelectComponent extends AbstractSettingComponent {
             checkAnimations.put(option, checkAnim);
 
             if (hoverAnim > 0.01f) {
-                int hoverBgAlpha = (int)(30 * hoverAnim * panelAlpha);
+                int hoverBgAlpha = (int) (30 * hoverAnim * panelAlpha);
                 Render2D.rect(boxX + 2, optionY + 1, BOX_WIDTH - 4, OPTION_HEIGHT - 2,
                         new Color(100, 100, 105, hoverBgAlpha).getRGB(), 2f);
             }
@@ -453,10 +449,10 @@ public class MultiSelectComponent extends AbstractSettingComponent {
             float checkX = boxX + 5;
             float checkY = optionY + OPTION_HEIGHT / 2 - checkSize / 2;
 
-            int checkBgAlpha = (int)((40 + hoverAnim * 20) * panelAlpha);
+            int checkBgAlpha = (int) ((40 + hoverAnim * 20) * panelAlpha);
             Render2D.rect(checkX, checkY, checkSize, checkSize, new Color(55, 55, 60, checkBgAlpha).getRGB(), 2f);
 
-            int checkOutlineAlpha = (int)((80 + hoverAnim * 40) * panelAlpha);
+            int checkOutlineAlpha = (int) ((80 + hoverAnim * 40) * panelAlpha);
             Render2D.outline(checkX, checkY, checkSize, checkSize, 0.5f, new Color(120, 120, 125, checkOutlineAlpha).getRGB(), 2f);
 
             if (checkAnim > 0.01f) {
@@ -464,7 +460,7 @@ public class MultiSelectComponent extends AbstractSettingComponent {
                 float innerX = checkX + (checkSize - innerSize) / 2;
                 float innerY = checkY + (checkSize - innerSize) / 2;
 
-                int innerAlpha = (int)(220 * checkAnim * panelAlpha);
+                int innerAlpha = (int) (220 * checkAnim * panelAlpha);
                 Render2D.rect(innerX, innerY, innerSize, innerSize, new Color(140, 180, 160, innerAlpha).getRGB(), 1.5f);
             }
 
@@ -482,8 +478,8 @@ public class MultiSelectComponent extends AbstractSettingComponent {
                 displayOption += "..";
             }
 
-            int textGray = (int)(140 + checkAnim * 40 + hoverAnim * 20);
-            int textAlpha = (int)(200 * panelAlpha);
+            int textGray = (int) (140 + checkAnim * 40 + hoverAnim * 20);
+            int textAlpha = (int) (200 * panelAlpha);
             Fonts.BOLD.draw(displayOption, textX, textY, 5, new Color(textGray, textGray, textGray + 5, textAlpha).getRGB());
 
             optionY += OPTION_HEIGHT;

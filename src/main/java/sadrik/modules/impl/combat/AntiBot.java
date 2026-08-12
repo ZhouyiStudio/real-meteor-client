@@ -54,7 +54,8 @@ public class AntiBot extends ModuleStructure {
         switch (e.getPacket()) {
             case PlayerListS2CPacket list -> checkPlayerAfterSpawn(list);
             case PlayerRemoveS2CPacket remove -> removePlayerBecauseLeftServer(remove);
-            default -> {}
+            default -> {
+            }
         }
     }
 

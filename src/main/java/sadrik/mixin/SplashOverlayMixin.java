@@ -19,12 +19,21 @@ import sadrik.screens.loading.Loading;
 @Mixin(SplashOverlay.class)
 public abstract class SplashOverlayMixin {
 
-    @Shadow @Final private MinecraftClient client;
-    @Shadow @Final private ResourceReload reload;
-    @Shadow @Final private boolean reloading;
-    @Shadow private float progress;
-    @Shadow private long reloadCompleteTime;
-    @Shadow private long reloadStartTime;
+    @Shadow
+    @Final
+    private MinecraftClient client;
+    @Shadow
+    @Final
+    private ResourceReload reload;
+    @Shadow
+    @Final
+    private boolean reloading;
+    @Shadow
+    private float progress;
+    @Shadow
+    private long reloadCompleteTime;
+    @Shadow
+    private long reloadStartTime;
 
     @Unique
     private Loading loadingScreen;

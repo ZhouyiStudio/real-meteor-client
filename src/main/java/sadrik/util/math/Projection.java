@@ -8,16 +8,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import org.joml.Matrix4d;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4d;
-import org.joml.Vector4f;
+import org.joml.*;
 import org.lwjgl.opengl.GL11;
 import sadrik.IMinecraft;
 import sadrik.modules.impl.combat.aura.Angle;
 import sadrik.modules.impl.combat.aura.MathAngle;
 import sadrik.util.render.Render3D;
+
+import java.lang.Math;
 
 @UtilityClass
 public class Projection implements IMinecraft {
@@ -314,7 +312,8 @@ public class Projection implements IMinecraft {
         double screenHeight = mc.getWindow().getScaledHeight();
 
         if (Double.isNaN(vec.x) || Double.isNaN(vec.y) || Double.isNaN(vec.z) || Double.isNaN(vec.w)) return true;
-        if (Double.isInfinite(vec.x) || Double.isInfinite(vec.y) || Double.isInfinite(vec.z) || Double.isInfinite(vec.w)) return true;
+        if (Double.isInfinite(vec.x) || Double.isInfinite(vec.y) || Double.isInfinite(vec.z) || Double.isInfinite(vec.w))
+            return true;
 
         if (vec.z < -screenWidth || vec.x > screenWidth * 2) return true;
         if (vec.w < -screenHeight || vec.y > screenHeight * 2) return true;
@@ -333,5 +332,6 @@ public class Projection implements IMinecraft {
         return isPointInFrontDouble(worldPos, camera.getCameraPos(), camera);
     }
 
-    private record ClipResult(double x, double y, double z, double w, double viewZ) {}
+    private record ClipResult(double x, double y, double z, double w, double viewZ) {
+    }
 }

@@ -2,6 +2,7 @@ package sadrik.util.inventory;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
+import net.minecraft.client.network.PendingUpdateManager;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.EquippableComponent;
 import net.minecraft.entity.EquipmentSlot;
@@ -14,7 +15,6 @@ import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Hand;
-import net.minecraft.client.network.PendingUpdateManager;
 import sadrik.mixin.ClientWorldAccessor;
 
 import java.util.Arrays;
@@ -30,7 +30,8 @@ public final class InventoryUtils {
     private static int savedSlot = -1;
     private static int silentSlot = -1;
 
-    private InventoryUtils() {}
+    private InventoryUtils() {
+    }
 
     public static int findItemInHotbar(Item item) {
         if (mc.player == null) return -1;

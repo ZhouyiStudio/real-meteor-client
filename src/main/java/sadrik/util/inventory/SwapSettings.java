@@ -109,19 +109,44 @@ public class SwapSettings {
         return this;
     }
 
-    public boolean shouldStopMovement() { return stopMovement; }
-    public boolean shouldStopSprint() { return stopSprint; }
-    public boolean shouldCloseInventory() { return closeInventory; }
-    public double getVelocityThreshold() { return velocityThreshold; }
+    public boolean shouldStopMovement() {
+        return stopMovement;
+    }
 
-    public int randomPreStopDelay() { return random(preStopDelayMin, preStopDelayMax); }
-    public int randomWaitStopDelay() { return random(waitStopDelayMin, waitStopDelayMax); }
-    public int randomPreSwapDelay() { return random(preSwapDelayMin, preSwapDelayMax); }
-    public int randomPostSwapDelay() { return random(postSwapDelayMin, postSwapDelayMax); }
-    public int randomResumeDelay() { return random(resumeDelayMin, resumeDelayMax); }
+    public boolean shouldStopSprint() {
+        return stopSprint;
+    }
+
+    public boolean shouldCloseInventory() {
+        return closeInventory;
+    }
+
+    public double getVelocityThreshold() {
+        return velocityThreshold;
+    }
+
+    public int randomPreStopDelay() {
+        return random(preStopDelayMin, preStopDelayMax);
+    }
+
+    public int randomWaitStopDelay() {
+        return random(waitStopDelayMin, waitStopDelayMax);
+    }
+
+    public int randomPreSwapDelay() {
+        return random(preSwapDelayMin, preSwapDelayMax);
+    }
+
+    public int randomPostSwapDelay() {
+        return random(postSwapDelayMin, postSwapDelayMax);
+    }
+
+    public int randomResumeDelay() {
+        return random(resumeDelayMin, resumeDelayMax);
+    }
 
     private int random(int min, int max) {
         if (min >= max) return min;
-        return min + (int)(Math.random() * (max - min + 1));
+        return min + (int) (Math.random() * (max - min + 1));
     }
 }

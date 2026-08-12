@@ -1,8 +1,8 @@
 package sadrik.screens.clickgui.impl.settingsrender;
 
 import net.minecraft.client.gui.DrawContext;
-import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.modules.module.setting.implement.BooleanSetting;
+import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.render.Render2D;
 import sadrik.util.render.font.Fonts;
 
@@ -49,7 +49,7 @@ public class CheckboxComponent extends AbstractSettingComponent {
         stretchAnimation += (targetStretch - stretchAnimation) * stretchSpeed;
         stretchAnimation = clamp(stretchAnimation, 0f, 1f);
 
-        int iconAlpha = (int)(200 * alphaMultiplier);
+        int iconAlpha = (int) (200 * alphaMultiplier);
         Fonts.GUI_ICONS.draw("T", x + 0.5f, y + height / 2 - 11f, 11, new Color(210, 210, 210, iconAlpha).getRGB());
 
         Fonts.BOLD.draw(booleanSetting.getName(), x + 9.5f, y + height / 2 - 7.5f, 6, applyAlpha(new Color(210, 210, 220, 200)).getRGB());
@@ -62,7 +62,7 @@ public class CheckboxComponent extends AbstractSettingComponent {
 
         Render2D.rect(checkboxX, checkboxY, checkboxWidth, checkboxSize, applyAlpha(new Color(55, 55, 55, 25)).getRGB(), 4f);
 
-        int outlineAlpha = 60 + (int)(hoverAnimation * 40);
+        int outlineAlpha = 60 + (int) (hoverAnimation * 40);
         Render2D.outline(checkboxX, checkboxY, checkboxWidth, checkboxSize, 0.5f, applyAlpha(new Color(155, 155, 155, outlineAlpha)).getRGB(), 4f);
 
         float knobBaseSize = checkboxSize - 3;

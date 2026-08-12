@@ -42,18 +42,21 @@ public class Network implements IMinecraft {
                 TPS = MathHelper.clamp(rawTPS, 0, maxTPS);
                 timestamp = nanoTime;
             }
-            default -> {}
+            default -> {
+            }
         }
     }
 
     public String getServer() {
-        if (PlayerInteractionHelper.nullCheck() || mc.getNetworkHandler() == null || mc.getNetworkHandler().getServerInfo() == null || mc.getNetworkHandler().getBrand() == null) return "Vanilla";
+        if (PlayerInteractionHelper.nullCheck() || mc.getNetworkHandler() == null || mc.getNetworkHandler().getServerInfo() == null || mc.getNetworkHandler().getBrand() == null)
+            return "Vanilla";
         String serverIp = mc.getNetworkHandler().getServerInfo().address.toLowerCase();
         String brand = mc.getNetworkHandler().getBrand().toLowerCase();
 
         if (brand.contains("botfilter")) return "FunTime";
         else if (brand.contains("§6spooky§ccore")) return "SpookyTime";
-        else if (serverIp.contains("funtime") || serverIp.contains("skytime") || serverIp.contains("space-times") || serverIp.contains("funsky")) return "CopyTime";
+        else if (serverIp.contains("funtime") || serverIp.contains("skytime") || serverIp.contains("space-times") || serverIp.contains("funsky"))
+            return "CopyTime";
         else if (brand.contains("holyworld") || brand.contains("vk.com/idwok")) return "HolyWorld";
         else if (serverIp.contains("reallyworld")) return "ReallyWorld";
         else if (serverIp.contains("gulpvp")) return "GulPvP";
@@ -100,12 +103,35 @@ public class Network implements IMinecraft {
         return mc.world.getRegistryKey().getValue().getPath();
     }
 
-    public boolean isCopyTime() {return server.equals("CopyTime") || server.equals("SpookyTime") || server.equals("FunTime");}
-    public boolean isFunTime() {return server.equals("FunTime");}
-    public boolean isReallyWorld() {return server.equals("ReallyWorld");}
-    public boolean isGulPvP() {return server.equals("GulPvP");}
-    public boolean isHolyWorld() {return server.equals("HolyWorld");}
-    public boolean isSpookyTime() {return server.equals("SpookyTime");}
-    public boolean isAresMine() {return server.equals("aresmine");}
-    public boolean isVanilla() {return server.equals("Vanilla");}
+    public boolean isCopyTime() {
+        return server.equals("CopyTime") || server.equals("SpookyTime") || server.equals("FunTime");
+    }
+
+    public boolean isFunTime() {
+        return server.equals("FunTime");
+    }
+
+    public boolean isReallyWorld() {
+        return server.equals("ReallyWorld");
+    }
+
+    public boolean isGulPvP() {
+        return server.equals("GulPvP");
+    }
+
+    public boolean isHolyWorld() {
+        return server.equals("HolyWorld");
+    }
+
+    public boolean isSpookyTime() {
+        return server.equals("SpookyTime");
+    }
+
+    public boolean isAresMine() {
+        return server.equals("aresmine");
+    }
+
+    public boolean isVanilla() {
+        return server.equals("Vanilla");
+    }
 }

@@ -30,5 +30,6 @@ public class Fonts {
         return FONT_REGISTRY;
     }
 
-    private Fonts() {}
+    private Fonts() {
+    }
 }

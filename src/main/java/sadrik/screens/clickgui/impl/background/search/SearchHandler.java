@@ -202,7 +202,8 @@ public class SearchHandler implements IMinecraft {
                     }
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         searchResultAnimations.clear();
         searchResultAnimStartTimes.clear();
@@ -216,7 +217,7 @@ public class SearchHandler implements IMinecraft {
             if (oldAnimations.containsKey(module)) {
                 float oldProgress = oldAnimations.get(module);
                 searchResultAnimations.put(module, Math.max(oldProgress, 0.5f));
-                searchResultAnimStartTimes.put(module, currentTime - (long)(SEARCH_RESULT_ANIM_DURATION * 0.85f));
+                searchResultAnimStartTimes.put(module, currentTime - (long) (SEARCH_RESULT_ANIM_DURATION * 0.85f));
             } else {
                 searchResultAnimations.put(module, 0f);
                 searchResultAnimStartTimes.put(module, currentTime + newIndex * 40L);
@@ -255,9 +256,18 @@ public class SearchHandler implements IMinecraft {
 
         if (isControlDown()) {
             switch (keyCode) {
-                case GLFW.GLFW_KEY_A -> { selectAllSearchText(); return true; }
-                case GLFW.GLFW_KEY_C -> { copySearchToClipboard(); return true; }
-                case GLFW.GLFW_KEY_V -> { pasteToSearch(); return true; }
+                case GLFW.GLFW_KEY_A -> {
+                    selectAllSearchText();
+                    return true;
+                }
+                case GLFW.GLFW_KEY_C -> {
+                    copySearchToClipboard();
+                    return true;
+                }
+                case GLFW.GLFW_KEY_V -> {
+                    pasteToSearch();
+                    return true;
+                }
                 case GLFW.GLFW_KEY_X -> {
                     if (hasSearchSelection()) {
                         copySearchToClipboard();

@@ -1,5 +1,9 @@
 package sadrik.modules.impl.combat.aura.rotations;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import sadrik.Initialization;
 import sadrik.modules.impl.combat.Aura;
 import sadrik.modules.impl.combat.aura.Angle;
@@ -7,14 +11,8 @@ import sadrik.modules.impl.combat.aura.MathAngle;
 import sadrik.modules.impl.combat.aura.attack.StrikeManager;
 import sadrik.modules.impl.combat.aura.impl.RotateConstructor;
 import sadrik.util.timer.StopWatch;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 
 import java.security.SecureRandom;
-
-import static sadrik.IMinecraft.mc;
 
 public class FTAngle extends RotateConstructor {
 

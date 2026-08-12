@@ -5,8 +5,8 @@ import lombok.Getter;
 import java.time.Instant;
 
 /**
- *  © 2025 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2025 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 @Getter

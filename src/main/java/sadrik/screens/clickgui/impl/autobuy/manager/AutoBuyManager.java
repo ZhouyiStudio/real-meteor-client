@@ -1,10 +1,10 @@
 package sadrik.screens.clickgui.impl.autobuy.manager;
 
+import sadrik.modules.impl.misc.AutoBuy;
 import sadrik.screens.clickgui.impl.autobuy.AutoBuyableItem;
 import sadrik.screens.clickgui.impl.autobuy.items.ItemRegistry;
 import sadrik.util.config.impl.autobuyconfig.AutoBuyConfig;
 import sadrik.util.string.chat.ChatMessage;
-import sadrik.modules.impl.misc.AutoBuy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,8 @@ import java.util.List;
 public class AutoBuyManager {
     private static AutoBuyManager instance;
 
-    private AutoBuyManager() {}
+    private AutoBuyManager() {
+    }
 
     public static AutoBuyManager getInstance() {
         if (instance == null) {

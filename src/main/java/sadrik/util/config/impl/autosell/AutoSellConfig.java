@@ -29,7 +29,8 @@ public class AutoSellConfig {
         Path configDir = Paths.get("Sadrik", "configs", "autosell");
         try {
             Files.createDirectories(configDir);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         configPath = configDir.resolve("autosell.json");
         load();
     }
@@ -53,14 +54,16 @@ public class AutoSellConfig {
                     }
                 }
             }
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 
     public void save() {
         try {
             String json = gson.toJson(data);
             Files.writeString(configPath, json);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 
     public Map<String, String> getItems() {

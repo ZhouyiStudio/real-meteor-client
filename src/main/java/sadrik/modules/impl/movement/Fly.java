@@ -97,7 +97,7 @@ public class Fly extends ModuleStructure {
         double x = 0.0;
         double z = 0.0;
         if (f != 0.0F || s != 0.0F) {
-            float yawRad = yaw * ((float)Math.PI / 180.0F);
+            float yawRad = yaw * ((float) Math.PI / 180.0F);
             x = -MathHelper.sin(yawRad) * speedScale * f + MathHelper.cos(yawRad) * speedScale * s;
             z = MathHelper.cos(yawRad) * speedScale * f + MathHelper.sin(yawRad) * speedScale * s;
         }

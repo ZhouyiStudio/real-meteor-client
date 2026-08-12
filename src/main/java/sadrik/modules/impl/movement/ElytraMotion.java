@@ -24,6 +24,7 @@ public class ElytraMotion extends ModuleStructure {
     public static Fly getInstance() {
         return Instance.get(Fly.class);
     }
+
     @NonFinal
 
     StopWatch timer = new StopWatch();
@@ -31,7 +32,8 @@ public class ElytraMotion extends ModuleStructure {
     Vec3d targetPosition = null;
     @NonFinal
     Random random = new Random();
-    @NonFinal double rotationAngle = 0.0;
+    @NonFinal
+    double rotationAngle = 0.0;
 
     public ElytraMotion() {
         super("ElytraMotion", "Elytra Motion", ModuleCategory.MOVEMENT);

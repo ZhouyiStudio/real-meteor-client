@@ -18,11 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import sadrik.events.api.EventManager;
-import sadrik.events.impl.GlassHandsRenderEvent;
-import sadrik.events.impl.HandAnimationEvent;
-import sadrik.events.impl.HandOffsetEvent;
-import sadrik.events.impl.HeldItemUpdateEvent;
-import sadrik.events.impl.ItemRendererEvent;
+import sadrik.events.impl.*;
 import sadrik.modules.impl.render.GlassHands;
 
 @Mixin(HeldItemRenderer.class)

@@ -1,8 +1,8 @@
 package sadrik.modules.module.setting.implement;
 
-import sadrik.modules.module.setting.Setting;
 import lombok.Getter;
 import lombok.Setter;
+import sadrik.modules.module.setting.Setting;
 
 import java.awt.*;
 import java.util.function.Supplier;

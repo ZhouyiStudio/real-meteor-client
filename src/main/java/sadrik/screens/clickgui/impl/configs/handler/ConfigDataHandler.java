@@ -47,7 +47,8 @@ public class ConfigDataHandler {
                             }
                         });
             }
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
 
         for (String config : configs) {
             if (!oldConfigs.contains(config)) {

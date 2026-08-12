@@ -17,11 +17,7 @@ import net.minecraft.network.packet.s2c.play.CloseScreenS2CPacket;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.PlayerInput;
 import sadrik.events.api.EventHandler;
-import sadrik.events.impl.ClickSlotEvent;
-import sadrik.events.impl.CloseScreenEvent;
-import sadrik.events.impl.InputEvent;
-import sadrik.events.impl.PacketEvent;
-import sadrik.events.impl.TickEvent;
+import sadrik.events.impl.*;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.modules.module.category.ModuleCategory;
 import sadrik.modules.module.setting.implement.BooleanSetting;
@@ -193,7 +189,7 @@ public class InventoryMove extends ModuleStructure {
             case CLOSE_INVENTORY -> {
                 closeInventoryNow();
                 movePhase = MovePhase.RESUMING;
-                currentDelay = 20 + (int)(Math.random() * 30);
+                currentDelay = 20 + (int) (Math.random() * 30);
                 actionStartTime = System.currentTimeMillis();
             }
             case RESUMING -> {

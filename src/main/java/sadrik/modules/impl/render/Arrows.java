@@ -2,11 +2,11 @@ package sadrik.modules.impl.render;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.option.Perspective;
-import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -17,12 +17,8 @@ import sadrik.modules.module.category.ModuleCategory;
 import sadrik.modules.module.setting.implement.ColorSetting;
 import sadrik.modules.module.setting.implement.SliderSettings;
 import sadrik.util.Instance;
-import sadrik.util.animations.Animation;
+import sadrik.util.animations.*;
 import sadrik.util.repository.friend.FriendUtils;
-import sadrik.util.animations.Direction;
-import sadrik.util.animations.EaseInOutQuad;
-import sadrik.util.animations.Easings;
-import sadrik.util.animations.SmoothAnimation;
 
 import java.util.ArrayList;
 import java.util.List;

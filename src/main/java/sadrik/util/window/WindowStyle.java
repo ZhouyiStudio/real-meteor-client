@@ -1,20 +1,23 @@
 package sadrik.util.window;
 
-import org.lwjgl.glfw.GLFWNativeWin32;
-import com.sun.jna.*;
-import com.sun.jna.platform.win32.WinDef.*;
+import com.sun.jna.Memory;
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
+import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.win32.*;
+import com.sun.jna.win32.StdCallLibrary;
+import org.lwjgl.glfw.GLFWNativeWin32;
 
 /**
- *  © 2025 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2025 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 public class WindowStyle {
 
     public interface DwmApi extends StdCallLibrary {
         DwmApi INSTANCE = Native.load("dwmapi", DwmApi.class);
+
         HRESULT DwmSetWindowAttribute(HWND hwnd, int dwAttribute, Pointer pvAttribute, int cbAttribute);
     }
 

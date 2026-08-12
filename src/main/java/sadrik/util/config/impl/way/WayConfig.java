@@ -1,10 +1,6 @@
 package sadrik.util.config.impl.way;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import sadrik.util.config.impl.consolelogger.Logger;
 import sadrik.util.repository.way.Way;
 import sadrik.util.repository.way.WayRepository;
@@ -26,7 +22,8 @@ public class WayConfig {
         Path configDir = Paths.get("Sadrik", "configs");
         try {
             Files.createDirectories(configDir);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         configPath = configDir.resolve("waypoints.json");
     }
 

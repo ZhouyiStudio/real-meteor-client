@@ -12,7 +12,8 @@ public final class SwapManager {
     private static final Map<String, SwapSequence> sequences = new ConcurrentHashMap<>();
     private static SwapSequence activeSequence;
 
-    private SwapManager() {}
+    private SwapManager() {
+    }
 
     public static void tick() {
         if (activeSequence != null) {

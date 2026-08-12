@@ -1,10 +1,10 @@
 package sadrik.modules.module.setting.implement;
 
-import sadrik.modules.module.setting.Setting;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.lwjgl.glfw.GLFW;
+import sadrik.modules.module.setting.Setting;
 
 import java.util.function.Supplier;
 

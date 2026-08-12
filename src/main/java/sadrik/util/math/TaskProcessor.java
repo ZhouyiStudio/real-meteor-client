@@ -1,6 +1,8 @@
 package sadrik.util.math;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import sadrik.modules.module.ModuleStructure;
@@ -35,7 +37,6 @@ public class TaskProcessor<T> {
             return null;
         }
     }
-
 
 
     @ToString

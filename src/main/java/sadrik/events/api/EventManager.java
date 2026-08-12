@@ -14,7 +14,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public final class EventManager {
     private static final Map<Class<? extends Event>, List<MethodData>> REGISTRY_MAP = new ConcurrentHashMap<>();
 
-    public EventManager() {}
+    public EventManager() {
+    }
 
     public static void register(Object object) {
         for (final Method method : object.getClass().getDeclaredMethods()) {
@@ -151,5 +152,6 @@ public final class EventManager {
         }
     }
 
-    private record MethodData(Object source, Method target, byte priority) {}
+    private record MethodData(Object source, Method target, byte priority) {
+    }
 }

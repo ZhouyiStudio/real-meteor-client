@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- *  © 2026 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2026 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 public abstract class Command {

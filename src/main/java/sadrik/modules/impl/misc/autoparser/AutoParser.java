@@ -4,18 +4,14 @@ import net.minecraft.client.gui.screen.ingame.GenericContainerScreen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.message.LastSeenMessageList;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
-import net.minecraft.network.packet.c2s.play.CommandExecutionC2SPacket;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Hand;
 import sadrik.events.api.EventHandler;
 import sadrik.events.impl.TickEvent;
 import sadrik.modules.module.ModuleStructure;
-import sadrik.modules.module.category.ModuleCategory;
-import sadrik.modules.module.setting.implement.BooleanSetting;
-import sadrik.modules.module.setting.implement.SliderSettings;
-import sadrik.screens.clickgui.impl.autobuy.AutoBuyableItem;
 import sadrik.screens.clickgui.impl.autobuy.AuctionUtils;
+import sadrik.screens.clickgui.impl.autobuy.AutoBuyableItem;
 import sadrik.screens.clickgui.impl.autobuy.manager.AutoBuyManager;
 import sadrik.util.modules.autoparser.AutoParserItems;
 import sadrik.util.string.chat.ChatMessage;
@@ -373,7 +369,8 @@ public class AutoParser extends ModuleStructure {
         try {
             int syncId = screen.getScreenHandler().syncId;
             mc.interactionManager.clickSlot(syncId, 50, 0, SlotActionType.PICKUP, mc.player);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         state = ParserState.WAITING_PAGE_CHANGE;
         pageChangeAttempts = 0;
@@ -452,7 +449,8 @@ public class AutoParser extends ModuleStructure {
             if (mc.player != null && mc.currentScreen != null) {
                 mc.player.closeHandledScreen();
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         ChatMessage.autobuymessageSuccess("§a✓ AutoParser завершён!");
 
@@ -541,7 +539,8 @@ public class AutoParser extends ModuleStructure {
                     }
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         return false;
     }
@@ -581,7 +580,8 @@ public class AutoParser extends ModuleStructure {
                     return true;
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         return false;
     }
 

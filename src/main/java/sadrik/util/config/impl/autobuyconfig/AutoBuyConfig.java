@@ -26,7 +26,8 @@ public class AutoBuyConfig {
         private int buyBelow = 1000;
         private int minQuantity = 1;
 
-        public ItemConfig() {}
+        public ItemConfig() {
+        }
 
         public ItemConfig(boolean enabled, int buyBelow, int minQuantity) {
             this.enabled = enabled;
@@ -46,7 +47,8 @@ public class AutoBuyConfig {
         Path configDir = Paths.get("Sadrik", "configs", "autobuy");
         try {
             Files.createDirectories(configDir);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         configPath = configDir.resolve("autobuy.json");
         load();
     }
@@ -70,14 +72,16 @@ public class AutoBuyConfig {
                     }
                 }
             }
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 
     public void save() {
         try {
             String json = gson.toJson(data);
             Files.writeString(configPath, json);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 
     public void reset() {
@@ -86,7 +90,8 @@ public class AutoBuyConfig {
             if (Files.exists(configPath)) {
                 Files.delete(configPath);
             }
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         save();
     }
 

@@ -1,5 +1,6 @@
 package sadrik.mixin;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -32,7 +33,6 @@ import sadrik.util.config.ConfigSystem;
 import sadrik.util.render.font.FontRenderer;
 import sadrik.util.session.SessionChanger;
 import sadrik.util.window.WindowStyle;
-import net.fabricmc.loader.api.FabricLoader;
 
 import static sadrik.IMinecraft.mc;
 
@@ -86,7 +86,8 @@ public abstract class MinecraftClientMixin {
                     fontRenderer.initialize();
                     fontsInitialized = true;
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 
@@ -94,7 +95,7 @@ public abstract class MinecraftClientMixin {
     private void redirectTitleScreen(Screen screen, CallbackInfo ci) {
         if (screen instanceof TitleScreen && !(screen instanceof MainMenuScreen)) {
             ci.cancel();
-            ((MinecraftClient)(Object)this).setScreen(new MainMenuScreen());
+            ((MinecraftClient) (Object) this).setScreen(new MainMenuScreen());
         }
     }
 

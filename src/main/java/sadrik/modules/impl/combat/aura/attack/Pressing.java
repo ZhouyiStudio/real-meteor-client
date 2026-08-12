@@ -16,7 +16,7 @@ public class Pressing implements IMinecraft {
             return false;
 
         if (isHoldingMace()) {
-            return lastClickPassed() >= (long)(50 * SyncTPS.tickAdjustmentFactor);
+            return lastClickPassed() >= (long) (50 * SyncTPS.tickAdjustmentFactor);
         }
 
         float cooldownProgress = mc.player.getAttackCooldownProgress(ticks);
@@ -25,7 +25,7 @@ public class Pressing implements IMinecraft {
     }
 
     public boolean isMaceFastAttack() {
-        return isHoldingMace() && lastClickPassed() >= (long)(50 * SyncTPS.tickAdjustmentFactor);
+        return isHoldingMace() && lastClickPassed() >= (long) (50 * SyncTPS.tickAdjustmentFactor);
     }
 
     public long lastClickPassed() {

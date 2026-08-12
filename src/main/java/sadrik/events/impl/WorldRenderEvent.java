@@ -1,6 +1,8 @@
 package sadrik.events.impl;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import net.minecraft.client.util.math.MatrixStack;
 import sadrik.events.api.events.Event;

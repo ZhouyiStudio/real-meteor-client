@@ -4,12 +4,14 @@ import sadrik.util.config.impl.consolelogger.Logger;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- *  © 2026 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2026 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 public class ConfigFileHandler {

@@ -34,10 +34,14 @@ public class Velocity extends ModuleStructure {
             .value("NewGrim", "OldGrim", "Matrix", "Normal")
             .selected("NewGrim");
 
-    @NonFinal boolean flag;
-    @NonFinal int grimTicks;
-    @NonFinal int ccCooldown;
-    @NonFinal Vec3d pendingVelocity;
+    @NonFinal
+    boolean flag;
+    @NonFinal
+    int grimTicks;
+    @NonFinal
+    int ccCooldown;
+    @NonFinal
+    Vec3d pendingVelocity;
 
     public Velocity() {
         super("Velocity", ModuleCategory.COMBAT);
@@ -49,7 +53,8 @@ public class Velocity extends ModuleStructure {
     public void onPacket(PacketEvent e) {
         if (!state) return;
         if (e.getType() != PacketEvent.Type.RECEIVE) return;
-        if (mc.player == null || mc.player.isTouchingWater() || mc.player.isSubmergedInWater() || mc.player.isInLava()) return;
+        if (mc.player == null || mc.player.isTouchingWater() || mc.player.isSubmergedInWater() || mc.player.isInLava())
+            return;
         if (ccCooldown > 0) {
             ccCooldown--;
             return;

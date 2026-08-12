@@ -8,8 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- *  © 2025 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2025 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 @UtilityClass

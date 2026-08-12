@@ -11,9 +11,9 @@ import sadrik.IMinecraft;
 import sadrik.Initialization;
 import sadrik.events.api.EventManager;
 import sadrik.events.impl.ModuleToggleEvent;
+import sadrik.modules.impl.render.Hud;
 import sadrik.modules.module.category.ModuleCategory;
 import sadrik.modules.module.setting.SettingRepository;
-import sadrik.modules.impl.render.Hud;
 import sadrik.screens.hud.Notifications;
 import sadrik.util.animations.Animation;
 import sadrik.util.animations.Decelerate;
@@ -79,7 +79,7 @@ public class ModuleStructure extends SettingRepository implements IMinecraft {
             if (hud != null && hud.isState() && notifications != null) {
                 if (hud.interfaceSettings.isSelected("Notifications")) {
                     if (state) {
-                        notifications.addNotification("Feature "  + name + " - enabled!", 2000);
+                        notifications.addNotification("Feature " + name + " - enabled!", 2000);
                     } else {
                         notifications.addNotification("Feature " + name + " - disabled!", 2000);
                     }

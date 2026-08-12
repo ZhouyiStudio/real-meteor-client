@@ -1,4 +1,5 @@
 package sadrik.events.api.types;
 
 
-public interface Listener {}
+public interface Listener {
+}

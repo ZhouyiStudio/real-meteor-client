@@ -1,7 +1,7 @@
 package sadrik.util.mods.config.wave;
 
-import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,12 +25,12 @@ public class WaveCapesConfigOverride implements PreLaunchEntrypoint {
     public void onPreLaunch() {
         Path configDir = FabricLoader.getInstance().getConfigDir();
         Path waveCapesConfig = configDir.resolve("waveycapes.json");
-        
+
         try {
             Files.writeString(waveCapesConfig, CONFIG_CONTENT);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
 }

@@ -14,13 +14,16 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.packet.c2s.play.*;
+import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket;
+import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
 import sadrik.events.api.EventHandler;
 import sadrik.events.impl.RotationUpdateEvent;
@@ -33,14 +36,19 @@ import sadrik.modules.module.setting.implement.BindSetting;
 import sadrik.modules.module.setting.implement.ColorSetting;
 import sadrik.modules.module.setting.implement.SelectSetting;
 import sadrik.util.ColorUtil;
-import sadrik.util.inventory.*;
+import sadrik.util.inventory.InventoryUtils;
+import sadrik.util.inventory.MovementController;
+import sadrik.util.inventory.SwapSettings;
 import sadrik.util.math.MathUtils;
 import sadrik.util.render.Render3D;
 import sadrik.util.repository.friend.FriendUtils;
 import sadrik.util.string.PlayerInteractionHelper;
 import sadrik.util.timer.StopWatch;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -70,15 +78,24 @@ public class ServerHelper extends ModuleStructure {
     Map<String, Boolean> lastKeyStates = new HashMap<>();
     Map<String, Boolean> keyPressedThisTick = new HashMap<>();
 
-    @NonFinal int originalSlot = -1;
-    @NonFinal int targetSlot = -1;
-    @NonFinal ActionState actionState = ActionState.IDLE;
-    @NonFinal long actionTimer = 0;
-    @NonFinal String pendingItemKey = null;
-    @NonFinal long stopMovementUntil = 0;
-    @NonFinal boolean keysOverridden = false;
-    @NonFinal boolean wasForwardPressed, wasBackPressed, wasLeftPressed, wasRightPressed;
-    @NonFinal int originalSourceSlot = -1;
+    @NonFinal
+    int originalSlot = -1;
+    @NonFinal
+    int targetSlot = -1;
+    @NonFinal
+    ActionState actionState = ActionState.IDLE;
+    @NonFinal
+    long actionTimer = 0;
+    @NonFinal
+    String pendingItemKey = null;
+    @NonFinal
+    long stopMovementUntil = 0;
+    @NonFinal
+    boolean keysOverridden = false;
+    @NonFinal
+    boolean wasForwardPressed, wasBackPressed, wasLeftPressed, wasRightPressed;
+    @NonFinal
+    int originalSourceSlot = -1;
 
     MovementController movement = new MovementController();
 
@@ -632,13 +649,17 @@ public class ServerHelper extends ModuleStructure {
 
                     switch (bind.setting.getName()) {
                         case "Трапка", "Обычная трапка" -> drawItemCube(playerPos, smooth, 1.99F, lineColor, fillColor);
-                        case "Дезориентация", "Огненный смерч", "Явная пыль" -> Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), bind.distance, validDistance(bind.distance) ? ColorUtil.getFriendColor() : lineColor);
-                        case "Взрывная штучка" -> Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), 5, validDistance(5) ? ColorUtil.getFriendColor() : lineColor);
+                        case "Дезориентация", "Огненный смерч", "Явная пыль" ->
+                                Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), bind.distance, validDistance(bind.distance) ? ColorUtil.getFriendColor() : lineColor);
+                        case "Взрывная штучка" ->
+                                Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), 5, validDistance(5) ? ColorUtil.getFriendColor() : lineColor);
                         case "Пласт" -> Render3D.drawPlastShape(playerPos, smooth, lineColor, fillColor);
                         case "Взрывная трапка" -> drawItemCube(playerPos, smooth, 3.99F, lineColor, fillColor);
                         case "Стан" -> drawItemCube(playerPos, smooth, 15.01F, lineColor, fillColor);
-                        case "Снежок заморозка" -> Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), 7, validDistance(7) ? ColorUtil.getFriendColor() : lineColor);
-                        case "Божья аура" -> Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), 2, validDistance(2) ? ColorUtil.getFriendColor() : lineColor);
+                        case "Снежок заморозка" ->
+                                Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), 7, validDistance(7) ? ColorUtil.getFriendColor() : lineColor);
+                        case "Божья аура" ->
+                                Render3D.drawRadiusCircle(MathUtils.interpolate(mc.player), 2, validDistance(2) ? ColorUtil.getFriendColor() : lineColor);
                     }
                 });
     }
@@ -677,7 +698,8 @@ public class ServerHelper extends ModuleStructure {
                     }
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         return lore;
     }
@@ -849,5 +871,6 @@ public class ServerHelper extends ModuleStructure {
                 .orElse(null);
     }
 
-    public record KeyBind(Item item, BindSetting setting, float distance) {}
+    public record KeyBind(Item item, BindSetting setting, float distance) {
+    }
 }

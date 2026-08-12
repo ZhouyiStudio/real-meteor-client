@@ -8,7 +8,8 @@ public interface HudElement {
 
     void tick();
 
-    default void onPacket(PacketEvent e) {}
+    default void onPacket(PacketEvent e) {
+    }
 
     boolean isEnabled();
 

@@ -338,7 +338,7 @@ public class Render2D {
 
     public static void drawFramebufferTexture(int textureId, float x, float y, float width, float height,
                                               float r, float g, float b, float a) {
-        int color = ((int)(a * 255) << 24) | ((int)(r * 255) << 16) | ((int)(g * 255) << 8) | (int)(b * 255);
+        int color = ((int) (a * 255) << 24) | ((int) (r * 255) << 16) | ((int) (g * 255) << 8) | (int) (b * 255);
         int[] colors = {color, color, color, color};
         float[] radii = {0, 0, 0, 0};
 

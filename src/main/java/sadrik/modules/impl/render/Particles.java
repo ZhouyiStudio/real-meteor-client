@@ -18,11 +18,7 @@ import sadrik.modules.impl.render.particles.Particle3D;
 import sadrik.modules.impl.render.particles.TotemEmitter;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.modules.module.category.ModuleCategory;
-import sadrik.modules.module.setting.implement.BooleanSetting;
-import sadrik.modules.module.setting.implement.ColorSetting;
-import sadrik.modules.module.setting.implement.MultiSelectSetting;
-import sadrik.modules.module.setting.implement.SelectSetting;
-import sadrik.modules.module.setting.implement.SliderSettings;
+import sadrik.modules.module.setting.implement.*;
 import sadrik.util.Instance;
 
 import java.util.ArrayList;

@@ -4,8 +4,8 @@ import net.minecraft.text.ClickEvent;
 import net.minecraft.text.HoverEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.math.BlockPos;
 import sadrik.IMinecraft;
 import sadrik.command.Command;
 import sadrik.command.CommandManager;
@@ -124,7 +124,8 @@ public class WayCommand extends Command implements IMinecraft {
                 if (args.length > 1) {
                     try {
                         page = Integer.parseInt(args[1]);
-                    } catch (NumberFormatException ignored) {}
+                    } catch (NumberFormatException ignored) {
+                    }
                 }
 
                 String server = repository.getCurrentServer();

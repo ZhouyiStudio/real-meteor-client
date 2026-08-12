@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- *  © 2025 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2025 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 @UtilityClass

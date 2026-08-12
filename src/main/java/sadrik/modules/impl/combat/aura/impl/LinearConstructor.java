@@ -10,6 +10,7 @@ public class LinearConstructor extends RotateConstructor {
     public LinearConstructor() {
         super("Linear");
     }
+
     public static final LinearConstructor INSTANCE = new LinearConstructor();
 
     @Override

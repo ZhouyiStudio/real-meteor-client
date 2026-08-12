@@ -1,18 +1,16 @@
 package sadrik.modules.impl.combat.aura.rotations;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.Vec3d;
 import sadrik.Initialization;
 import sadrik.modules.impl.combat.aura.Angle;
 import sadrik.modules.impl.combat.aura.MathAngle;
 import sadrik.modules.impl.combat.aura.attack.StrikeManager;
 import sadrik.modules.impl.combat.aura.impl.RotateConstructor;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.Vec3d;
 
 import java.util.concurrent.ThreadLocalRandom;
-
-import static sadrik.IMinecraft.mc;
 
 public class FTAngleBypass extends RotateConstructor {
     public FTAngleBypass() {

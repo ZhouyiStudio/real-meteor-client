@@ -2,7 +2,8 @@ package sadrik.modules.impl.render;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
@@ -307,5 +308,6 @@ public class JumpCircle extends ModuleStructure implements IMinecraft {
         }
     }
 
-    public record Circle(Vec3d pos, StopWatch timer) {}
+    public record Circle(Vec3d pos, StopWatch timer) {
+    }
 }

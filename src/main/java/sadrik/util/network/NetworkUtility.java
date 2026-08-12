@@ -6,7 +6,7 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.PendingUpdateManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.*;
-import net.minecraft.network.packet.s2c.play.*;
+import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import net.minecraft.util.Hand;
 import net.minecraft.util.PlayerInput;
 import net.minecraft.util.hit.BlockHitResult;
@@ -87,7 +87,7 @@ public class NetworkUtility implements IMinecraft {
     }
 
     public void sendUse(Hand hand, Angle angle) {
-        try (PendingUpdateManager pendingUpdateManager = ((IClientWorld)mc.world).client$pending().incrementSequence()) {
+        try (PendingUpdateManager pendingUpdateManager = ((IClientWorld) mc.world).client$pending().incrementSequence()) {
             int i = pendingUpdateManager.getSequence();
             PlayerInteractItemC2SPacket packet = new PlayerInteractItemC2SPacket(hand, i, angle.getYaw(), angle.getPitch());
             NetworkUtility.send(packet);
@@ -95,7 +95,7 @@ public class NetworkUtility implements IMinecraft {
     }
 
     public void sendUse(Hand hand, BlockHitResult hitResult) {
-        try (PendingUpdateManager pendingUpdateManager = ((IClientWorld)mc.world).client$pending().incrementSequence()) {
+        try (PendingUpdateManager pendingUpdateManager = ((IClientWorld) mc.world).client$pending().incrementSequence()) {
             int i = pendingUpdateManager.getSequence();
             PlayerInteractBlockC2SPacket packet = new PlayerInteractBlockC2SPacket(hand, hitResult, i);
             NetworkUtility.send(packet);

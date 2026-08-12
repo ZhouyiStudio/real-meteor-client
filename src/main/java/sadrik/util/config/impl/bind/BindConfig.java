@@ -26,7 +26,8 @@ public class BindConfig {
         Path configDir = Paths.get("Sadrik", "configs");
         try {
             Files.createDirectories(configDir);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         configPath = configDir.resolve("Bind.json");
         load();
     }

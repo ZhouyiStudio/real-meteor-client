@@ -2,7 +2,6 @@ package sadrik.util.math;
 
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;

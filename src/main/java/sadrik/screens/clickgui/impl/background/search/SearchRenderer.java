@@ -3,8 +3,8 @@ package sadrik.screens.clickgui.impl.background.search;
 import net.minecraft.client.gui.DrawContext;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.List;
@@ -101,8 +101,8 @@ public class SearchRenderer {
     }
 
     private void renderResultItem(ModuleStructure module, float panelX, float itemY, float panelW,
-                                   float resultHeight, float itemOffsetX, float itemAlpha,
-                                   boolean hovered, boolean selected) {
+                                  float resultHeight, float itemOffsetX, float itemAlpha,
+                                  boolean hovered, boolean selected) {
 
         Color bg;
         if (selected) {

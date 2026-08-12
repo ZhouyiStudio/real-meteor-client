@@ -2,8 +2,8 @@ package sadrik.screens.hud;
 
 import net.minecraft.client.gui.DrawContext;
 import sadrik.client.draggables.AbstractHudElement;
-import sadrik.util.render.Render2D;
 import sadrik.util.ColorUtil;
+import sadrik.util.render.Render2D;
 
 public class test extends AbstractHudElement {
 
@@ -24,7 +24,7 @@ public class test extends AbstractHudElement {
         if (rotation >= 360f) rotation -= 360f;
 
         pulsePhase += 0.05f;
-        if (pulsePhase >= (float)(Math.PI * 2)) pulsePhase -= (float)(Math.PI * 2);
+        if (pulsePhase >= (float) (Math.PI * 2)) pulsePhase -= (float) (Math.PI * 2);
 
         if (toggled) {
             if (toggleProgress < 1f) toggleProgress = Math.min(1f, toggleProgress + 0.05f);
@@ -83,11 +83,11 @@ public class test extends AbstractHudElement {
     }
 
     private void drawPulsingArc(float cx, float cy, int alpha) {
-        float pulse = (float)(Math.sin(pulsePhase) * 0.3 + 0.7);
+        float pulse = (float) (Math.sin(pulsePhase) * 0.3 + 0.7);
         int baseColor = 0xFF00FF88;
-        int r = (int)(((baseColor >> 16) & 0xFF) * pulse);
-        int g = (int)(((baseColor >> 8) & 0xFF) * pulse);
-        int b = (int)((baseColor & 0xFF) * pulse);
+        int r = (int) (((baseColor >> 16) & 0xFF) * pulse);
+        int g = (int) (((baseColor >> 8) & 0xFF) * pulse);
+        int b = (int) ((baseColor & 0xFF) * pulse);
         int color = ColorUtil.applyAlpha((0xFF << 24) | (r << 16) | (g << 8) | b, alpha);
 
         float thickness = 2f + pulse * 2f;
@@ -100,9 +100,9 @@ public class test extends AbstractHudElement {
         int offColor = 0xFF666666;
         int onColor = 0xFF00FF00;
 
-        int r = (int)(((offColor >> 16) & 0xFF) * (1 - toggleProgress) + ((onColor >> 16) & 0xFF) * toggleProgress);
-        int g = (int)(((offColor >> 8) & 0xFF) * (1 - toggleProgress) + ((onColor >> 8) & 0xFF) * toggleProgress);
-        int b = (int)((offColor & 0xFF) * (1 - toggleProgress) + (onColor & 0xFF) * toggleProgress);
+        int r = (int) (((offColor >> 16) & 0xFF) * (1 - toggleProgress) + ((onColor >> 16) & 0xFF) * toggleProgress);
+        int g = (int) (((offColor >> 8) & 0xFF) * (1 - toggleProgress) + ((onColor >> 8) & 0xFF) * toggleProgress);
+        int b = (int) ((offColor & 0xFF) * (1 - toggleProgress) + (onColor & 0xFF) * toggleProgress);
         int color = ColorUtil.applyAlpha((0xFF << 24) | (r << 16) | (g << 8) | b, alpha);
 
         Render2D.arc(cx, cy, 20f, 4f, degree, -90f, color);
@@ -208,7 +208,7 @@ public class test extends AbstractHudElement {
     }
 
     private void drawHealthRing(float cx, float cy, int alpha) {
-        float health = 0.5f + (float)Math.sin(pulsePhase) * 0.3f;
+        float health = 0.5f + (float) Math.sin(pulsePhase) * 0.3f;
 
         int bgColor = ColorUtil.applyAlpha(0x40FF0000, alpha);
         Render2D.arc(cx, cy, 18f, 5f, 360f, -90f, bgColor);
@@ -226,8 +226,8 @@ public class test extends AbstractHudElement {
         Render2D.arc(cx, cy, 18f, 5f, degree, -90f, healthColor);
 
         if (health < 0.3f) {
-            float pulse = (float)(Math.sin(pulsePhase * 4) * 0.5 + 0.5);
-            int pulseColor = ColorUtil.applyAlpha((int)(0x60 * pulse) << 24 | 0xFF0000, alpha);
+            float pulse = (float) (Math.sin(pulsePhase * 4) * 0.5 + 0.5);
+            int pulseColor = ColorUtil.applyAlpha((int) (0x60 * pulse) << 24 | 0xFF0000, alpha);
             Render2D.arc(cx, cy, 20f, 2f, degree, -90f, pulseColor);
         }
     }
@@ -250,7 +250,7 @@ public class test extends AbstractHudElement {
     }
 
     private void drawOutlinedPulsing(float cx, float cy, int alpha) {
-        float pulse = (float)(Math.sin(pulsePhase) * 0.3 + 0.7);
+        float pulse = (float) (Math.sin(pulsePhase) * 0.3 + 0.7);
         float thickness = 3f + pulse * 2f;
 
         int fillColor = ColorUtil.applyAlpha(0xFFFF6600, alpha);
@@ -263,9 +263,9 @@ public class test extends AbstractHudElement {
 
         int offFill = 0xFF444444;
         int onFill = 0xFF00DD00;
-        int r = (int)(((offFill >> 16) & 0xFF) * (1 - toggleProgress) + ((onFill >> 16) & 0xFF) * toggleProgress);
-        int g = (int)(((offFill >> 8) & 0xFF) * (1 - toggleProgress) + ((onFill >> 8) & 0xFF) * toggleProgress);
-        int b = (int)((offFill & 0xFF) * (1 - toggleProgress) + (onFill & 0xFF) * toggleProgress);
+        int r = (int) (((offFill >> 16) & 0xFF) * (1 - toggleProgress) + ((onFill >> 16) & 0xFF) * toggleProgress);
+        int g = (int) (((offFill >> 8) & 0xFF) * (1 - toggleProgress) + ((onFill >> 8) & 0xFF) * toggleProgress);
+        int b = (int) ((offFill & 0xFF) * (1 - toggleProgress) + (onFill & 0xFF) * toggleProgress);
         int fillColor = ColorUtil.applyAlpha((0xFF << 24) | (r << 16) | (g << 8) | b, alpha);
 
         int outlineColor = ColorUtil.applyAlpha(0xFFFFFFFF, alpha);
@@ -294,16 +294,35 @@ public class test extends AbstractHudElement {
         float m = v - c;
 
         float r, g, b;
-        if (h < 1f/6f) { r = c; g = x; b = 0; }
-        else if (h < 2f/6f) { r = x; g = c; b = 0; }
-        else if (h < 3f/6f) { r = 0; g = c; b = x; }
-        else if (h < 4f/6f) { r = 0; g = x; b = c; }
-        else if (h < 5f/6f) { r = x; g = 0; b = c; }
-        else { r = c; g = 0; b = x; }
+        if (h < 1f / 6f) {
+            r = c;
+            g = x;
+            b = 0;
+        } else if (h < 2f / 6f) {
+            r = x;
+            g = c;
+            b = 0;
+        } else if (h < 3f / 6f) {
+            r = 0;
+            g = c;
+            b = x;
+        } else if (h < 4f / 6f) {
+            r = 0;
+            g = x;
+            b = c;
+        } else if (h < 5f / 6f) {
+            r = x;
+            g = 0;
+            b = c;
+        } else {
+            r = c;
+            g = 0;
+            b = x;
+        }
 
-        int ri = (int)((r + m) * 255);
-        int gi = (int)((g + m) * 255);
-        int bi = (int)((b + m) * 255);
+        int ri = (int) ((r + m) * 255);
+        int gi = (int) ((g + m) * 255);
+        int bi = (int) ((b + m) * 255);
 
         return 0xFF000000 | (ri << 16) | (gi << 8) | bi;
     }

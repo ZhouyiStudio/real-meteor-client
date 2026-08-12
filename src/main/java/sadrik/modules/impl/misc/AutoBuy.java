@@ -13,16 +13,20 @@ import sadrik.events.api.EventHandler;
 import sadrik.events.impl.TickEvent;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.modules.module.category.ModuleCategory;
-import sadrik.modules.module.setting.implement.*;
-import sadrik.screens.clickgui.impl.autobuy.AutoBuyableItem;
+import sadrik.modules.module.setting.implement.BooleanSetting;
+import sadrik.modules.module.setting.implement.SelectSetting;
+import sadrik.modules.module.setting.implement.SliderSettings;
 import sadrik.screens.clickgui.impl.autobuy.AuctionUtils;
+import sadrik.screens.clickgui.impl.autobuy.AutoBuyableItem;
 import sadrik.screens.clickgui.impl.autobuy.manager.AutoBuyManager;
 import sadrik.util.modules.autobuy.BuyRequest;
 import sadrik.util.modules.autobuy.NetworkManager;
 import sadrik.util.modules.autobuy.ServerManager;
 import sadrik.util.timer.TimerUtil;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 public class AutoBuy extends ModuleStructure {
@@ -81,7 +85,7 @@ public class AutoBuy extends ModuleStructure {
 
         msg("§aМодуль включён. Режим: §b" + mode.getSelected());
         if (mode.isSelected("Покупающий") && !serverType.isSelected("Выкл")) {
-            msg("§7Сервера: §b" + serverType.getSelected() + " §7| Смена каждые §b" + (int)serverSwitchTime.getValue() + "с");
+            msg("§7Сервера: §b" + serverType.getSelected() + " §7| Смена каждые §b" + (int) serverSwitchTime.getValue() + "с");
         }
     }
 

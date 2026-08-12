@@ -4,8 +4,8 @@ import net.minecraft.client.gui.DrawContext;
 import sadrik.modules.module.setting.implement.SelectSetting;
 import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -133,10 +133,10 @@ public class SelectComponent extends AbstractSettingComponent {
         float boxY = y + height / 2 - 5;
         float boxHeight = 10f;
 
-        int bgAlpha = 25 + (int)(hoverAnimation * 15);
+        int bgAlpha = 25 + (int) (hoverAnimation * 15);
         Render2D.rect(boxX, boxY, BOX_WIDTH, boxHeight, applyAlpha(new Color(55, 55, 55, bgAlpha)).getRGB(), 3f);
 
-        int outlineAlpha = 60 + (int)(hoverAnimation * 40);
+        int outlineAlpha = 60 + (int) (hoverAnimation * 40);
         Render2D.outline(boxX, boxY, BOX_WIDTH, boxHeight, 0.5f, applyAlpha(new Color(155, 155, 155, outlineAlpha)).getRGB(), 3f);
 
         renderAnimatedSelectedText(boxX, boxY, boxHeight);
@@ -149,7 +149,7 @@ public class SelectComponent extends AbstractSettingComponent {
     }
 
     private void renderArrowIcon(float iconX, float iconY) {
-        int arrowAlpha = 120 + (int)(hoverAnimation * 60);
+        int arrowAlpha = 120 + (int) (hoverAnimation * 60);
 
         float centerX = iconX + 4f;
         float centerY = iconY + 4f;
@@ -171,13 +171,13 @@ public class SelectComponent extends AbstractSettingComponent {
         float maxTextWidth = BOX_WIDTH - 14;
         float textY = boxY + boxHeight / 2 - 2.5f;
 
-        Scissor.enable(boxX + 2, boxY, maxTextWidth + 2, boxHeight,2);
+        Scissor.enable(boxX + 2, boxY, maxTextWidth + 2, boxHeight, 2);
 
         if (isAnimatingSelection) {
             if (selectedTextAlpha > 0.01f) {
                 String displayOld = truncateText(animatingFromText, maxTextWidth);
                 float slideOffset = (1f - selectedTextSlide) * -15f;
-                int alpha = (int)(200 * selectedTextAlpha * alphaMultiplier);
+                int alpha = (int) (200 * selectedTextAlpha * alphaMultiplier);
                 Fonts.BOLD.draw(displayOld, boxX + 4 + slideOffset, textY, 5, new Color(160, 160, 165, alpha).getRGB());
             }
 
@@ -185,7 +185,7 @@ public class SelectComponent extends AbstractSettingComponent {
                 String selected = selectSetting.getSelected();
                 String displayNew = truncateText(selected, maxTextWidth);
                 float slideOffset = (1f - newSelectedTextSlide) * 20f;
-                int alpha = (int)(200 * newSelectedTextAlpha * alphaMultiplier);
+                int alpha = (int) (200 * newSelectedTextAlpha * alphaMultiplier);
                 Fonts.BOLD.draw(displayNew, boxX + 4 + slideOffset, textY, 5, new Color(160, 160, 165, alpha).getRGB());
             }
         } else {
@@ -223,7 +223,7 @@ public class SelectComponent extends AbstractSettingComponent {
             float maxScroll = descWidth - availableWidth + 5;
             float currentScroll = descScrollOffset * maxScroll;
 
-            Scissor.enable(x, descY - 2, availableWidth, 10,2);
+            Scissor.enable(x, descY - 2, availableWidth, 10, 2);
             Fonts.BOLD.draw(description, x + 0.5f - currentScroll, descY, 5, applyAlpha(new Color(128, 128, 128, 128)).getRGB());
             Scissor.disable();
         }
@@ -272,15 +272,15 @@ public class SelectComponent extends AbstractSettingComponent {
 
         float panelAlpha = expandAnimation * alphaMultiplier;
 
-        int panelBgAlpha = (int)(200 * panelAlpha);
+        int panelBgAlpha = (int) (200 * panelAlpha);
         Render2D.rect(boxX, startY, BOX_WIDTH, visibleHeight, new Color(30, 30, 30, panelBgAlpha).getRGB(), 3f);
 
-        int panelOutlineAlpha = (int)(100 * panelAlpha);
+        int panelOutlineAlpha = (int) (100 * panelAlpha);
         Render2D.outline(boxX, startY, BOX_WIDTH, visibleHeight, 0.5f, new Color(80, 80, 85, panelOutlineAlpha).getRGB(), 3f);
 
         if (visibleHeight < 1f) return;
 
-        Scissor.enable(boxX, startY, BOX_WIDTH, visibleHeight,2);
+        Scissor.enable(boxX, startY, BOX_WIDTH, visibleHeight, 2);
 
         float optionY = startY;
 
@@ -301,7 +301,7 @@ public class SelectComponent extends AbstractSettingComponent {
             selectAnimations.put(option, selectAnim);
 
             if (hoverAnim > 0.01f) {
-                int hoverBgAlpha = (int)(30 * hoverAnim * panelAlpha);
+                int hoverBgAlpha = (int) (30 * hoverAnim * panelAlpha);
                 Render2D.rect(boxX + 2, optionY + 1, BOX_WIDTH - 4, OPTION_HEIGHT - 2,
                         new Color(100, 100, 105, hoverBgAlpha).getRGB(), 2f);
             }
@@ -310,10 +310,10 @@ public class SelectComponent extends AbstractSettingComponent {
             float checkX = boxX + 5;
             float checkY = optionY + OPTION_HEIGHT / 2 - checkSize / 2;
 
-            int checkBgAlpha = (int)((40 + hoverAnim * 20) * panelAlpha);
+            int checkBgAlpha = (int) ((40 + hoverAnim * 20) * panelAlpha);
             Render2D.rect(checkX, checkY, checkSize, checkSize, new Color(55, 55, 60, checkBgAlpha).getRGB(), 2f);
 
-            int checkOutlineAlpha = (int)((80 + hoverAnim * 40) * panelAlpha);
+            int checkOutlineAlpha = (int) ((80 + hoverAnim * 40) * panelAlpha);
             Render2D.outline(checkX, checkY, checkSize, checkSize, 0.5f, new Color(120, 120, 125, checkOutlineAlpha).getRGB(), 2f);
 
             if (selectAnim > 0.01f) {
@@ -321,7 +321,7 @@ public class SelectComponent extends AbstractSettingComponent {
                 float innerX = checkX + (checkSize - innerSize) / 2;
                 float innerY = checkY + (checkSize - innerSize) / 2;
 
-                int innerAlpha = (int)(220 * selectAnim * panelAlpha);
+                int innerAlpha = (int) (220 * selectAnim * panelAlpha);
                 Render2D.rect(innerX, innerY, innerSize, innerSize, new Color(140, 180, 160, innerAlpha).getRGB(), 1.5f);
             }
 
@@ -339,8 +339,8 @@ public class SelectComponent extends AbstractSettingComponent {
                 displayOption += "..";
             }
 
-            int textGray = (int)(140 + selectAnim * 40 + hoverAnim * 20);
-            int textAlpha = (int)(200 * panelAlpha);
+            int textGray = (int) (140 + selectAnim * 40 + hoverAnim * 20);
+            int textAlpha = (int) (200 * panelAlpha);
             Fonts.BOLD.draw(displayOption, textX, textY, 5, new Color(textGray, textGray, textGray + 5, textAlpha).getRGB());
 
             optionY += OPTION_HEIGHT;

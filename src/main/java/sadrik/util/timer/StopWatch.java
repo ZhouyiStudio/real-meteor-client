@@ -3,8 +3,8 @@ package sadrik.util.timer;
 import lombok.Getter;
 
 /**
- *  © 2025 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2025 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 @Getter

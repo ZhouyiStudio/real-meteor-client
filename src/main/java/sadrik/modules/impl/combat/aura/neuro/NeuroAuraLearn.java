@@ -1,15 +1,14 @@
 package sadrik.modules.impl.combat.aura.neuro;
 
-import sadrik.modules.module.setting.implement.SelectSetting;
-import sadrik.modules.impl.combat.aura.attack.StrikerConstructor;
-import sadrik.modules.impl.combat.aura.MathAngle;
-import sadrik.modules.impl.combat.aura.Angle;
-import sadrik.modules.impl.combat.Aura;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import sadrik.modules.impl.combat.Aura;
+import sadrik.modules.impl.combat.aura.Angle;
+import sadrik.modules.impl.combat.aura.attack.StrikerConstructor;
+import sadrik.modules.module.setting.implement.SelectSetting;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

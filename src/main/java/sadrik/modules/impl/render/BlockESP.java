@@ -107,15 +107,24 @@ public class BlockESP extends ModuleStructure {
         String group = BlockESPConfig.getInstance().getGroupByBlock(blockId);
         if (group == null) return 0xFFFFFFFF;
         switch (group) {
-            case "shulker_box": return shulkerColor.getColor();
-            case "chest": return chestColor.getColor();
-            case "trapped_chest": return trappedChestColor.getColor();
-            case "ender_chest": return enderChestColor.getColor();
-            case "barrel": return barrelColor.getColor();
-            case "hopper": return hopperColor.getColor();
-            case "dropper": return dropperColor.getColor();
-            case "dispenser": return dispenserColor.getColor();
-            default: return 0xFFFFFFFF;
+            case "shulker_box":
+                return shulkerColor.getColor();
+            case "chest":
+                return chestColor.getColor();
+            case "trapped_chest":
+                return trappedChestColor.getColor();
+            case "ender_chest":
+                return enderChestColor.getColor();
+            case "barrel":
+                return barrelColor.getColor();
+            case "hopper":
+                return hopperColor.getColor();
+            case "dropper":
+                return dropperColor.getColor();
+            case "dispenser":
+                return dispenserColor.getColor();
+            default:
+                return 0xFFFFFFFF;
         }
     }
 

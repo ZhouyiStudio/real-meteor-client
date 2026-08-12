@@ -2,8 +2,8 @@ package sadrik.screens.clickgui.impl.settingsrender;
 
 import net.minecraft.client.gui.DrawContext;
 import org.lwjgl.glfw.GLFW;
-import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.modules.module.setting.implement.SliderSettings;
+import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.render.Render2D;
 import sadrik.util.render.font.Fonts;
 
@@ -60,7 +60,7 @@ public class SliderComponent extends AbstractSettingComponent {
         knobAnimation += (knobTarget - knobAnimation) * 0.25f;
         knobAnimation = Math.max(0f, Math.min(1f, knobAnimation));
 
-        int iconAlpha = (int)(200 * alphaMultiplier);
+        int iconAlpha = (int) (200 * alphaMultiplier);
         Fonts.GUI_ICONS.draw("H", x - 0.5f, y + 0.5f, 9, new Color(210, 210, 210, iconAlpha).getRGB());
 
         Fonts.BOLD.draw(sliderSettings.getName(), x + 9.5f, y + 1f, 6, applyAlpha(new Color(210, 210, 220, 200)).getRGB());

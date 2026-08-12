@@ -73,7 +73,10 @@ public class FakePlayerManager implements IMinecraft {
         while (true) {
             FakePlayerEntity fp = fakes.remove(cur);
             if (fp == null) break;
-            try { fp.remove(); } catch (Throwable ignored) { }
+            try {
+                fp.remove();
+            } catch (Throwable ignored) {
+            }
             cur++;
         }
     }
@@ -81,7 +84,10 @@ public class FakePlayerManager implements IMinecraft {
     public void delAll() {
         for (FakePlayerEntity fp : fakes.values()) {
             if (fp == null) continue;
-            try { fp.remove(); } catch (Throwable ignored) { }
+            try {
+                fp.remove();
+            } catch (Throwable ignored) {
+            }
         }
         fakes.clear();
     }
@@ -89,7 +95,10 @@ public class FakePlayerManager implements IMinecraft {
     public void del(int id) {
         FakePlayerEntity fp = fakes.remove(id);
         if (fp == null) return;
-        try { fp.remove(); } catch (Throwable ignored) { }
+        try {
+            fp.remove();
+        } catch (Throwable ignored) {
+        }
     }
 
     @EventHandler
@@ -115,11 +124,13 @@ public class FakePlayerManager implements IMinecraft {
 
             try {
                 fp.move(MovementType.SELF, Vec3d.ZERO);
-            } catch (Throwable ignored) { }
+            } catch (Throwable ignored) {
+            }
 
             try {
                 fp.limbAnimator.setSpeed(0.0F);
-            } catch (Throwable ignored) { }
+            } catch (Throwable ignored) {
+            }
 
             tryLookAtPlayer(fp);
         }
@@ -148,7 +159,8 @@ public class FakePlayerManager implements IMinecraft {
             if (popTotemAndReset(fp)) return;
 
             fp.setHealth(0.0F);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private FakePlayerEntity spawnOne(int slot, int total, String mode) {
@@ -190,11 +202,13 @@ public class FakePlayerManager implements IMinecraft {
             if (hp < 0.0F) hp = 0.0F;
             if (hp > max) hp = max;
             fp.setHealth(hp);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         try {
             fp.setAbsorptionAmount(0.0F);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         fp.spawn();
         return fp;
@@ -224,7 +238,8 @@ public class FakePlayerManager implements IMinecraft {
             fp.setBodyYaw(yaw);
             fp.setHeadYaw(yaw);
             fp.setPitch(pitch);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private void setPosCompat(Entity e, double x, double y, double z) {
@@ -234,24 +249,28 @@ public class FakePlayerManager implements IMinecraft {
             Method m = e.getClass().getMethod("setPos", double.class, double.class, double.class);
             m.invoke(e, x, y, z);
             return;
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         try {
             Method m = e.getClass().getMethod("setPosition", double.class, double.class, double.class);
             m.invoke(e, x, y, z);
             return;
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         try {
             Method m = e.getClass().getMethod("updatePosition", double.class, double.class, double.class);
             m.invoke(e, x, y, z);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private void equipDefault(FakePlayerEntity fp) {
         try {
             fp.setStackInHand(Hand.MAIN_HAND, mc.player.getMainHandStack().copy());
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         try {
             ItemStack off = mc.player.getOffHandStack();
@@ -263,7 +282,8 @@ public class FakePlayerManager implements IMinecraft {
         } catch (Throwable ignored) {
             try {
                 fp.setStackInHand(Hand.OFF_HAND, new ItemStack(Items.TOTEM_OF_UNDYING));
-            } catch (Throwable ignored2) { }
+            } catch (Throwable ignored2) {
+            }
         }
 
         tryCopyArmor(fp);
@@ -278,14 +298,16 @@ public class FakePlayerManager implements IMinecraft {
             addEnchant(sword, Enchantments.FIRE_ASPECT, 2);
             addEnchant(sword, Enchantments.LOOTING, 3);
             fp.setStackInHand(Hand.MAIN_HAND, sword);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
         addEnchant(totem, Enchantments.UNBREAKING, 3);
         addEnchant(totem, Enchantments.MENDING, 1);
         try {
             fp.setStackInHand(Hand.OFF_HAND, totem);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         try {
             ItemStack h = new ItemStack(Items.NETHERITE_HELMET);
@@ -314,7 +336,8 @@ public class FakePlayerManager implements IMinecraft {
             addEnchant(b, Enchantments.MENDING, 1);
             addEnchant(b, Enchantments.FEATHER_FALLING, 4);
             fp.equipStack(EquipmentSlot.FEET, b);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private void equipDiamond(FakePlayerEntity fp) {
@@ -326,14 +349,16 @@ public class FakePlayerManager implements IMinecraft {
             addEnchant(sword, Enchantments.FIRE_ASPECT, 2);
             addEnchant(sword, Enchantments.LOOTING, 3);
             fp.setStackInHand(Hand.MAIN_HAND, sword);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         ItemStack totem = new ItemStack(Items.TOTEM_OF_UNDYING);
         addEnchant(totem, Enchantments.UNBREAKING, 3);
         addEnchant(totem, Enchantments.MENDING, 1);
         try {
             fp.setStackInHand(Hand.OFF_HAND, totem);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
 
         try {
             ItemStack h = new ItemStack(Items.DIAMOND_HELMET);
@@ -362,7 +387,8 @@ public class FakePlayerManager implements IMinecraft {
             addEnchant(b, Enchantments.MENDING, 1);
             addEnchant(b, Enchantments.FEATHER_FALLING, 4);
             fp.equipStack(EquipmentSlot.FEET, b);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private void tryCopyArmor(FakePlayerEntity fp) {
@@ -372,7 +398,8 @@ public class FakePlayerManager implements IMinecraft {
             fp.equipStack(EquipmentSlot.CHEST, mc.player.getEquippedStack(EquipmentSlot.CHEST).copy());
             fp.equipStack(EquipmentSlot.LEGS, mc.player.getEquippedStack(EquipmentSlot.LEGS).copy());
             fp.equipStack(EquipmentSlot.FEET, mc.player.getEquippedStack(EquipmentSlot.FEET).copy());
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private boolean hasDiamondOrNetherKit(FakePlayerEntity fp) {
@@ -382,7 +409,8 @@ public class FakePlayerManager implements IMinecraft {
             if (mh != null && !mh.isEmpty()) {
                 if (mh.getItem() == Items.NETHERITE_SWORD || mh.getItem() == Items.DIAMOND_SWORD) return true;
             }
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
         try {
             EquipmentSlot[] armorSlots = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
             for (EquipmentSlot slot : armorSlots) {
@@ -395,7 +423,8 @@ public class FakePlayerManager implements IMinecraft {
                         || s.getItem() == Items.DIAMOND_LEGGINGS || s.getItem() == Items.DIAMOND_BOOTS)
                     return true;
             }
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
         return false;
     }
 
@@ -451,11 +480,13 @@ public class FakePlayerManager implements IMinecraft {
                 if (mc.player.networkHandler != null) {
                     new EntityStatusS2CPacket(fp, (byte) 35).apply(mc.player.networkHandler);
                 }
-            } catch (Throwable ignored) { }
+            } catch (Throwable ignored) {
+            }
 
             try {
                 fp.setAbsorptionAmount(0.0F);
-            } catch (Throwable ignored) { }
+            } catch (Throwable ignored) {
+            }
 
             float max = 20.0F;
             try {
@@ -463,7 +494,8 @@ public class FakePlayerManager implements IMinecraft {
             } catch (Throwable ignored) {
                 try {
                     if (mc.player != null) max = mc.player.getMaxHealth();
-                } catch (Throwable ignored2) { }
+                } catch (Throwable ignored2) {
+                }
             }
             if (max < 1.0F) max = 20.0F;
 
@@ -476,7 +508,8 @@ public class FakePlayerManager implements IMinecraft {
                     addEnchant(totem, Enchantments.MENDING, 1);
                 }
                 fp.setStackInHand(Hand.OFF_HAND, totem);
-            } catch (Throwable ignored) { }
+            } catch (Throwable ignored) {
+            }
 
             setHurtFlash(fp, 10);
             return true;
@@ -512,7 +545,8 @@ public class FakePlayerManager implements IMinecraft {
                 m.invoke(stack, enchantParam, level);
                 return true;
             }
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
         return false;
     }
 
@@ -562,14 +596,16 @@ public class FakePlayerManager implements IMinecraft {
             Class<?> rk = Class.forName("net.minecraft.registry.RegistryKeys");
             Field f = rk.getField("ENCHANTMENT");
             enchRegKey = f.get(null);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
         if (enchRegKey == null) return keyOrEntryOrEnch;
 
         Object rm = null;
         try {
             Method m = mcc.world.getClass().getMethod("getRegistryManager");
             rm = m.invoke(mcc.world);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
         if (rm == null) return keyOrEntryOrEnch;
 
         Object reg = null;
@@ -607,7 +643,8 @@ public class FakePlayerManager implements IMinecraft {
                 if (!p0.isInstance(arg) && !p0.isAssignableFrom(arg.getClass())) continue;
                 return m.invoke(target, arg);
             }
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
         return null;
     }
 
@@ -615,7 +652,8 @@ public class FakePlayerManager implements IMinecraft {
         if (mc.player == null || mc.world == null || e == null || sound == null) return;
         try {
             mc.world.playSoundFromEntity(mc.player, e, sound, SoundCategory.PLAYERS, 1.0F, 1.0F);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private void setHurtFlash(Object entity, int ticks) {
@@ -632,7 +670,8 @@ public class FakePlayerManager implements IMinecraft {
             if (f == null) return;
             f.setAccessible(true);
             f.setInt(obj, v);
-        } catch (Throwable ignored) { }
+        } catch (Throwable ignored) {
+        }
     }
 
     private Field findField(Class<?> c, String name) {
@@ -640,7 +679,8 @@ public class FakePlayerManager implements IMinecraft {
         while (cur != null) {
             try {
                 return cur.getDeclaredField(name);
-            } catch (Throwable ignored) { }
+            } catch (Throwable ignored) {
+            }
             cur = cur.getSuperclass();
         }
         return null;

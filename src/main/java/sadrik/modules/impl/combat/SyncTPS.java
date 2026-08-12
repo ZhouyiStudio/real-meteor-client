@@ -1,12 +1,12 @@
 package sadrik.modules.impl.combat;
 
+import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
+import net.minecraft.util.math.MathHelper;
 import sadrik.events.api.EventHandler;
 import sadrik.events.impl.PacketEvent;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.modules.module.category.ModuleCategory;
 import sadrik.util.Instance;
-import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
-import net.minecraft.util.math.MathHelper;
 
 public class SyncTPS extends ModuleStructure {
 

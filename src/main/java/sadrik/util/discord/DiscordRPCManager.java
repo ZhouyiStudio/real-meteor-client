@@ -34,22 +34,28 @@ public class DiscordRPCManager {
 
         DiscordEventHandler handler = new DiscordEventHandler() {
             @Override
-            public void ready(User user) {}
+            public void ready(User user) {
+            }
 
             @Override
-            public void disconnected(ErrorCode errorCode, String message) {}
+            public void disconnected(ErrorCode errorCode, String message) {
+            }
 
             @Override
-            public void errored(ErrorCode errorCode, String message) {}
+            public void errored(ErrorCode errorCode, String message) {
+            }
 
             @Override
-            public void joinGame(String joinSecret) {}
+            public void joinGame(String joinSecret) {
+            }
 
             @Override
-            public void spectateGame(String spectateSecret) {}
+            public void spectateGame(String spectateSecret) {
+            }
 
             @Override
-            public void joinRequest(dev.firstdark.rpc.models.DiscordJoinRequest joinRequest) {}
+            public void joinRequest(dev.firstdark.rpc.models.DiscordJoinRequest joinRequest) {
+            }
         };
 
         try {

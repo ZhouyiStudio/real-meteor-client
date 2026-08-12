@@ -7,8 +7,8 @@ import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
-import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.input.CharInput;
+import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.entity.player.SkinTextures;
 import net.minecraft.text.Text;
@@ -61,8 +61,9 @@ public class MainMenuScreen extends Screen {
     private static final float ZOOM_NORMAL = 1.0f;
     private static final float ZOOM_SPEED = 3f;
 
-    private enum View { MAIN_MENU, ALT_SCREEN }
-    private enum TransitionPhase { NONE, FADE_OUT, FADE_IN }
+    private enum View {MAIN_MENU, ALT_SCREEN}
+
+    private enum TransitionPhase {NONE, FADE_OUT, FADE_IN}
 
     private View currentView = View.MAIN_MENU;
     private View targetView = View.MAIN_MENU;

@@ -7,13 +7,13 @@ import net.minecraft.item.ItemStack;
 import org.joml.Matrix3x2fStack;
 import org.lwjgl.glfw.GLFW;
 import sadrik.IMinecraft;
-import sadrik.screens.clickgui.impl.autobuy.manager.AutoBuyManager;
 import sadrik.screens.clickgui.impl.autobuy.AutoBuyableItem;
 import sadrik.screens.clickgui.impl.autobuy.items.ItemRegistry;
+import sadrik.screens.clickgui.impl.autobuy.manager.AutoBuyManager;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
 import sadrik.util.render.item.ItemRender;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -385,7 +385,7 @@ public class AutoBuyGuiComponent implements IMinecraft {
 
         float dimFactor = 0.5f + 0.5f * enabledAnim;
 
-        int baseBg = 64 + (int)(hoverAnim * 36);
+        int baseBg = 64 + (int) (hoverAnim * 36);
         int bgR = clampColor((int) (baseBg * dimFactor));
         int bgG = clampColor((int) (baseBg * dimFactor));
         int bgB = clampColor((int) (baseBg * dimFactor));
@@ -639,7 +639,8 @@ public class AutoBuyGuiComponent implements IMinecraft {
 
             ItemRegistry.saveItemSettings(editingItem);
 
-        } catch (NumberFormatException ignored) {}
+        } catch (NumberFormatException ignored) {
+        }
 
         editingItem = null;
         editingField = EditField.NONE;

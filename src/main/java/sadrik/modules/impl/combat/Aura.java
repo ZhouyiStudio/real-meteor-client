@@ -2,11 +2,8 @@ package sadrik.modules.impl.combat;
 
 import antidaunleak.api.annotation.Native;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.experimental.NonFinal;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-
 import net.minecraft.util.Pair;
 import net.minecraft.util.PlayerInput;
 import net.minecraft.util.math.Box;
@@ -16,44 +13,35 @@ import sadrik.Initialization;
 import sadrik.events.api.EventHandler;
 import sadrik.events.api.types.EventType;
 import sadrik.events.impl.InputEvent;
-import sadrik.events.impl.PacketEvent;
 import sadrik.events.impl.RotationUpdateEvent;
 import sadrik.events.impl.TickEvent;
-
 import sadrik.modules.impl.combat.aura.Angle;
 import sadrik.modules.impl.combat.aura.AngleConfig;
 import sadrik.modules.impl.combat.aura.AngleConnection;
 import sadrik.modules.impl.combat.aura.MathAngle;
-import sadrik.modules.impl.combat.aura.attack.StrikeManager;
 import sadrik.modules.impl.combat.aura.attack.StrikerConstructor;
 import sadrik.modules.impl.combat.aura.impl.LinearConstructor;
 import sadrik.modules.impl.combat.aura.impl.RotateConstructor;
-import sadrik.modules.impl.combat.aura.rotations.FTAngle;
-import sadrik.modules.impl.combat.aura.rotations.FTAngleBypass;
-import sadrik.modules.impl.combat.aura.rotations.MatrixAngle;
-import sadrik.modules.impl.combat.aura.rotations.SPAngle;
-import sadrik.modules.impl.combat.aura.rotations.SnapAngle;
+import sadrik.modules.impl.combat.aura.neuro.NeuroAuraExec;
+import sadrik.modules.impl.combat.aura.neuro.NeuroAuraLearn;
+import sadrik.modules.impl.combat.aura.rotations.*;
 import sadrik.modules.impl.combat.aura.target.MultiPoint;
 import sadrik.modules.impl.combat.aura.target.TargetFinder;
 import sadrik.modules.impl.movement.ElytraTarget;
 import sadrik.modules.impl.movement.TargetStrafe;
-import sadrik.modules.impl.render.Hud;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.modules.module.category.ModuleCategory;
 import sadrik.modules.module.setting.implement.BooleanSetting;
 import sadrik.modules.module.setting.implement.MultiSelectSetting;
 import sadrik.modules.module.setting.implement.SelectSetting;
 import sadrik.modules.module.setting.implement.SliderSettings;
+import sadrik.screens.hud.Notifications;
 import sadrik.util.Instance;
 import sadrik.util.math.TaskPriority;
-
-import sadrik.modules.impl.combat.aura.neuro.NeuroAuraExec;
-import sadrik.modules.impl.combat.aura.neuro.NeuroAuraLearn;
-import sadrik.screens.hud.Notifications;
 import sadrik.util.string.PlayerInteractionHelper;
 
-import java.util.List;
 import java.util.Objects;
+
 public class Aura extends ModuleStructure {
 
     @Native(type = Native.Type.VMProtectBeginUltra)
@@ -160,10 +148,21 @@ public class Aura extends ModuleStructure {
         );
     }
 
-    public LivingEntity getTarget() { return target; }
-    public StrikerConstructor.AttackPerpetratorConfigurable getCachedConfig() { return cachedConfig; }
-    public Box getCachedHitbox() { return cachedHitbox; }
-    public Vec3d getCachedPoint() { return cachedPoint; }
+    public LivingEntity getTarget() {
+        return target;
+    }
+
+    public StrikerConstructor.AttackPerpetratorConfigurable getCachedConfig() {
+        return cachedConfig;
+    }
+
+    public Box getCachedHitbox() {
+        return cachedHitbox;
+    }
+
+    public Vec3d getCachedPoint() {
+        return cachedPoint;
+    }
 
     float effectiveAttackRange() {
         if (!neuroEnabled()) return attackrange.getValue();
@@ -575,13 +574,22 @@ public class Aura extends ModuleStructure {
 
             boolean forward = false, back = false, left = false, right = false;
             if (angleDiff >= -22.5 && angleDiff < 22.5) forward = true;
-            else if (angleDiff >= 22.5 && angleDiff < 67.5) { forward = true; right = true; }
-            else if (angleDiff >= 67.5 && angleDiff < 112.5) right = true;
-            else if (angleDiff >= 112.5 && angleDiff < 157.5) { back = true; right = true; }
-            else if (angleDiff >= -67.5 && angleDiff < -22.5) { forward = true; left = true; }
-            else if (angleDiff >= -112.5 && angleDiff < -67.5) { left = true; }
-            else if (angleDiff >= -157.5 && angleDiff < -112.5) { back = true; left = true; }
-            else back = true;
+            else if (angleDiff >= 22.5 && angleDiff < 67.5) {
+                forward = true;
+                right = true;
+            } else if (angleDiff >= 67.5 && angleDiff < 112.5) right = true;
+            else if (angleDiff >= 112.5 && angleDiff < 157.5) {
+                back = true;
+                right = true;
+            } else if (angleDiff >= -67.5 && angleDiff < -22.5) {
+                forward = true;
+                left = true;
+            } else if (angleDiff >= -112.5 && angleDiff < -67.5) {
+                left = true;
+            } else if (angleDiff >= -157.5 && angleDiff < -112.5) {
+                back = true;
+                left = true;
+            } else back = true;
 
             event.setDirectionalLow(forward, back, left, right);
             return;
@@ -621,13 +629,22 @@ public class Aura extends ModuleStructure {
 
             boolean forward = false, back = false, left = false, right = false;
             if (angleDiff >= -22.5 && angleDiff < 22.5) forward = true;
-            else if (angleDiff >= 22.5 && angleDiff < 67.5) { forward = true; right = true; }
-            else if (angleDiff >= 67.5 && angleDiff < 112.5) right = true;
-            else if (angleDiff >= 112.5 && angleDiff < 157.5) { back = true; right = true; }
-            else if (angleDiff >= -67.5 && angleDiff < -22.5) { forward = true; left = true; }
-            else if (angleDiff >= -112.5 && angleDiff < -67.5) { left = true; }
-            else if (angleDiff >= -157.5 && angleDiff < -112.5) { back = true; left = true; }
-            else back = true;
+            else if (angleDiff >= 22.5 && angleDiff < 67.5) {
+                forward = true;
+                right = true;
+            } else if (angleDiff >= 67.5 && angleDiff < 112.5) right = true;
+            else if (angleDiff >= 112.5 && angleDiff < 157.5) {
+                back = true;
+                right = true;
+            } else if (angleDiff >= -67.5 && angleDiff < -22.5) {
+                forward = true;
+                left = true;
+            } else if (angleDiff >= -112.5 && angleDiff < -67.5) {
+                left = true;
+            } else if (angleDiff >= -157.5 && angleDiff < -112.5) {
+                back = true;
+                left = true;
+            } else back = true;
 
             event.setDirectionalLow(forward, back, left, right);
         }

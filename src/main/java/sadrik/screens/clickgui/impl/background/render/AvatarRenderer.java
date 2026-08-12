@@ -3,9 +3,9 @@ package sadrik.screens.clickgui.impl.background.render;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
 import sadrik.util.render.gif.GifRender;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 

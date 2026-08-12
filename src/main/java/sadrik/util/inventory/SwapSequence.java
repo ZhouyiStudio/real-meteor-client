@@ -62,5 +62,6 @@ public class SwapSequence {
         running = false;
     }
 
-    private record SwapStep(int delayTicks, Runnable action, BooleanSupplier condition) {}
+    private record SwapStep(int delayTicks, Runnable action, BooleanSupplier condition) {
+    }
 }

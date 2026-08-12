@@ -141,5 +141,6 @@ public class Inventory extends AbstractHudElement {
         }
     }
 
-    private record CountLabel(float slotX, float slotY, int count) {}
+    private record CountLabel(float slotX, float slotY, int count) {
+    }
 }

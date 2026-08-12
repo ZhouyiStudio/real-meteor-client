@@ -14,10 +14,10 @@ import sadrik.screens.clickgui.impl.module.handler.ModuleScrollHandler;
 import sadrik.screens.clickgui.impl.module.render.ModuleListRenderer;
 import sadrik.screens.clickgui.impl.module.render.SettingsPanelRenderer;
 import sadrik.screens.clickgui.impl.module.util.ModuleDisplayHelper;
-import sadrik.screens.clickgui.impl.settingsrender.*;
 import sadrik.util.interfaces.AbstractSettingComponent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter

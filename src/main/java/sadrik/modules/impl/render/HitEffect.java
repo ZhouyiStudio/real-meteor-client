@@ -19,6 +19,7 @@ import sadrik.util.render.Render3D;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.Queue;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class HitEffect extends ModuleStructure {

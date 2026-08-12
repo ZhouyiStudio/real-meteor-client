@@ -7,8 +7,8 @@ import sadrik.client.draggables.AbstractHudElement;
 import sadrik.modules.module.ModuleStructure;
 import sadrik.util.animations.Direction;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 import sadrik.util.string.KeyHelper;
 
 import java.awt.*;
@@ -144,7 +144,7 @@ public class HotKeys extends AbstractHudElement {
             Render2D.outline(x, y, getWidth(), contentHeight, 0.35f, new Color(90, 90, 90, bgAlpha).getRGB(), 5);
         }
 
-        Scissor.enable(x, y, getWidth(), contentHeight,2);
+        Scissor.enable(x, y, getWidth(), contentHeight, 2);
 
         long activeModules = keysList.size();
         String moduleCountText = String.valueOf(activeModules);

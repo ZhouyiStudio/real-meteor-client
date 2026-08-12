@@ -63,13 +63,15 @@ public class ChinaHatFeatureRenderer extends FeatureRenderer<PlayerEntityRenderS
             if (state.id == mc.player.getId()) {
                 return true;
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         try {
             if (state.playerName != null && mc.player.getName() != null) {
                 return state.playerName.getString().equals(mc.player.getName().getString());
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         return false;
     }

@@ -24,7 +24,8 @@ public class StaffConfig {
         Path configDir = Paths.get("Sadrik", "configs");
         try {
             Files.createDirectories(configDir);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         configPath = configDir.resolve("staff.json");
     }
 

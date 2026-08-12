@@ -45,12 +45,12 @@ public class ConfigNotificationRenderer {
         float notifW = textWidth + 20;
         float notifX = x + (ConfigsRenderer.PANEL_WIDTH - notifW) / 2;
 
-        Render2D.rect(notifX, notifY, notifW, 18, 
-                new Color(bgColor.getRed(), bgColor.getGreen(), bgColor.getBlue(), 
+        Render2D.rect(notifX, notifY, notifW, 18,
+                new Color(bgColor.getRed(), bgColor.getGreen(), bgColor.getBlue(),
                         (int) (60 * notifAlpha)).getRGB(), 4);
 
         Fonts.BOLD.draw(notification, notifX + 10, notifY + 6, 5,
-                new Color(textColor.getRed(), textColor.getGreen(), textColor.getBlue(), 
+                new Color(textColor.getRed(), textColor.getGreen(), textColor.getBlue(),
                         (int) (255 * notifAlpha)).getRGB());
     }
 

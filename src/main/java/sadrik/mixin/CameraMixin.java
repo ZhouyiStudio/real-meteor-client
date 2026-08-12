@@ -4,9 +4,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.Camera;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,17 +21,26 @@ import sadrik.modules.impl.combat.aura.Angle;
 @Mixin(Camera.class)
 public abstract class CameraMixin {
 
-    @Shadow private Vec3d pos;
+    @Shadow
+    private Vec3d pos;
 
-    @Shadow @Final private BlockPos.Mutable blockPos;
+    @Shadow
+    @Final
+    private BlockPos.Mutable blockPos;
 
-    @Shadow public abstract void setRotation(float yaw, float pitch);
+    @Shadow
+    public abstract void setRotation(float yaw, float pitch);
 
-    @Shadow protected abstract void moveBy(float f, float g, float h);
+    @Shadow
+    protected abstract void moveBy(float f, float g, float h);
 
-    @Shadow protected abstract float clipToSpace(float f);
-    @Shadow private float yaw;
-    @Shadow private float pitch;
+    @Shadow
+    protected abstract float clipToSpace(float f);
+
+    @Shadow
+    private float yaw;
+    @Shadow
+    private float pitch;
 
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;setPos(DDD)V", shift = At.Shift.AFTER), cancellable = true)
     private void updateHook(World area, Entity focusedEntity, boolean thirdPerson, boolean inverseView, float tickProgress, CallbackInfo ci) {
@@ -57,7 +64,7 @@ public abstract class CameraMixin {
         CameraPositionEvent event = new CameraPositionEvent(pos);
         EventManager.callEvent(event);
         this.pos = pos = event.getPos();
-        blockPos.set(pos.x,pos.y,pos.z);
+        blockPos.set(pos.x, pos.y, pos.z);
         ci.cancel();
     }
 

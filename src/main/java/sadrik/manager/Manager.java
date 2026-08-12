@@ -5,7 +5,7 @@ import sadrik.client.draggables.HudManager;
 import sadrik.command.CommandManager;
 import sadrik.events.api.EventManager;
 import sadrik.modules.impl.combat.aura.attack.StrikerConstructor;
-import sadrik.modules.module.*;
+import sadrik.modules.module.ModuleRepository;
 import sadrik.screens.clickgui.ClickGui;
 import sadrik.util.config.ConfigSystem;
 import sadrik.util.config.impl.bind.BindConfig;
@@ -18,16 +18,16 @@ import sadrik.util.config.impl.staff.StaffConfig;
 import sadrik.util.entity.fakeplayer.FakePlayerManager;
 import sadrik.util.modules.ModuleProvider;
 import sadrik.util.modules.ModuleSwitcher;
+import sadrik.util.render.font.FontInitializer;
 import sadrik.util.render.shader.RenderCore;
 import sadrik.util.render.shader.Scissor;
-import sadrik.util.render.font.FontInitializer;
 import sadrik.util.repository.macro.MacroRepository;
 import sadrik.util.repository.way.WayRepository;
 import sadrik.util.tps.TPSCalculate;
 
 /**
- *  © 2026 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2026 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 @Getter

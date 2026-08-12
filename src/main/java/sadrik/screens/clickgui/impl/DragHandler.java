@@ -31,8 +31,8 @@ public class DragHandler implements IMinecraft {
             if (GLFW.glfwGetMouseButton(mc.getWindow().getHandle(), GLFW.GLFW_MOUSE_BUTTON_MIDDLE) != GLFW.GLFW_PRESS) {
                 dragging = false;
             } else {
-                targetOffsetX = dragStartOffsetX + (float)(mouseX - dragStartX);
-                targetOffsetY = dragStartOffsetY + (float)(mouseY - dragStartY);
+                targetOffsetX = dragStartOffsetX + (float) (mouseX - dragStartX);
+                targetOffsetY = dragStartOffsetY + (float) (mouseY - dragStartY);
                 offsetX = targetOffsetX;
                 offsetY = targetOffsetY;
             }

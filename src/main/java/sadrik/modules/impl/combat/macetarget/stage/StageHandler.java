@@ -30,7 +30,7 @@ public class StageHandler {
     @Setter
     private float height = 30.0f;
 
-    public StageHandler(ArmorSwapHandler armorSwapHandler, FireworkHandler fireworkHandler, 
+    public StageHandler(ArmorSwapHandler armorSwapHandler, FireworkHandler fireworkHandler,
                         AttackHandler attackHandler, StopWatch fireworkTimer) {
         this.armorSwapHandler = armorSwapHandler;
         this.fireworkHandler = fireworkHandler;

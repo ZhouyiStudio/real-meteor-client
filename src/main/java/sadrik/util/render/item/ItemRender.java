@@ -154,7 +154,8 @@ public class ItemRender {
                 SPRITE_CACHE.put(cacheKey, new CachedSprite(sprite));
                 return sprite;
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         return null;
     }
@@ -172,5 +173,6 @@ public class ItemRender {
         SPRITE_CACHE.clear();
     }
 
-    private record CachedSprite(Sprite sprite) {}
+    private record CachedSprite(Sprite sprite) {
+    }
 }

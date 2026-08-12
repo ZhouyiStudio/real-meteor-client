@@ -1,6 +1,8 @@
 package sadrik.modules.impl.misc;
 
 import net.minecraft.client.gui.screen.ingame.GenericContainerScreen;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.LoreComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -18,17 +20,12 @@ import sadrik.modules.module.category.ModuleCategory;
 import sadrik.modules.module.setting.implement.BooleanSetting;
 import sadrik.modules.module.setting.implement.MultiSelectSetting;
 import sadrik.modules.module.setting.implement.SliderSettings;
-import sadrik.util.timer.TimerUtil;
-
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.LoreComponent;
 import sadrik.util.config.impl.autosell.AutoSellConfig;
+import sadrik.util.timer.TimerUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static sadrik.IMinecraft.mc;
 
 public class AutoSell extends ModuleStructure {
 
@@ -47,9 +44,10 @@ public class AutoSell extends ModuleStructure {
     private final TimerUtil timer = TimerUtil.create();
     private final TimerUtil idleTimer = TimerUtil.create();
 
-    private enum Phase { IDLE, FIND_ITEM, PICKUP_ITEMS, SELECT_SLOT, SELL, WAIT_RESPONSE, COLLECT, SHIFT_HOTBAR, ERROR }
+    private enum Phase {IDLE, FIND_ITEM, PICKUP_ITEMS, SELECT_SLOT, SELL, WAIT_RESPONSE, COLLECT, SHIFT_HOTBAR, ERROR}
 
-    private enum CollectStep { OPEN_AH, WAIT_AH, CLICK_46, CLICK_0, CLOSE }
+    private enum CollectStep {OPEN_AH, WAIT_AH, CLICK_46, CLICK_0, CLOSE}
+
     private CollectStep collectStep = CollectStep.OPEN_AH;
 
     private Phase phase = Phase.IDLE;

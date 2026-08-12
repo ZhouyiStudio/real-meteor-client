@@ -3,8 +3,8 @@ package sadrik.screens.clickgui.impl.background.render;
 import sadrik.modules.module.category.ModuleCategory;
 import sadrik.screens.clickgui.impl.background.search.SearchHandler;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 

@@ -2,8 +2,6 @@ package sadrik.modules.impl.render.worldparticles;
 
 import net.minecraft.util.math.Vec3d;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class ParticleSpawner {
 
     private static final double MIN_RADIUS = 3.0;

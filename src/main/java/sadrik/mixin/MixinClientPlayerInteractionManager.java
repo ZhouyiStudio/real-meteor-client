@@ -14,7 +14,7 @@ import sadrik.events.impl.InteractEntityEvent;
 @Mixin(ClientPlayerInteractionManager.class)
 public class MixinClientPlayerInteractionManager {
 
-    @Inject(method = "attackEntity", at = @At("HEAD"),cancellable = true)
+    @Inject(method = "attackEntity", at = @At("HEAD"), cancellable = true)
     public void attackEntityHook(PlayerEntity player, Entity target, CallbackInfo info) {
         InteractEntityEvent event = new InteractEntityEvent(target);
         EventManager.callEvent(event);

@@ -4,8 +4,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- *  © 2026 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2026 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 public class ConfigPath {

@@ -5,8 +5,8 @@ import org.lwjgl.glfw.GLFW;
 import sadrik.modules.module.setting.implement.TextSetting;
 import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 
@@ -73,7 +73,7 @@ public class TextComponent extends AbstractSettingComponent {
             cursorBlinkAnimation = 0f;
         }
 
-        int iconAlpha = (int)(200 * alphaMultiplier);
+        int iconAlpha = (int) (200 * alphaMultiplier);
         Fonts.GUI_ICONS.draw("S", x + 0.5f, y + height / 2 - 10.25f, 11, new Color(210, 210, 220, iconAlpha).getRGB());
 
         Fonts.BOLD.draw(textSetting.getName(), x + 9.5f, y + height / 2 - 7.5f, 6, applyAlpha(new Color(210, 210, 220, 200)).getRGB());
@@ -86,13 +86,13 @@ public class TextComponent extends AbstractSettingComponent {
         float boxX = x + width - INPUT_BOX_WIDTH - 2;
         float boxY = y + height / 2 - INPUT_BOX_HEIGHT / 2;
 
-        int bgAlpha = (int)(25 + focusAnimation * 15 + hoverAnimation * 10);
+        int bgAlpha = (int) (25 + focusAnimation * 15 + hoverAnimation * 10);
         Render2D.rect(boxX, boxY, INPUT_BOX_WIDTH, INPUT_BOX_HEIGHT, applyAlpha(new Color(40, 40, 45, bgAlpha)).getRGB(), 3f);
 
         float outlineAlpha = 60 + hoverAnimation * 40 + focusAnimation * 60;
         Color outlineColor = focused
-                ? new Color(100, 140, 180, (int)(outlineAlpha * alphaMultiplier))
-                : new Color(155, 155, 155, (int)(outlineAlpha * alphaMultiplier));
+                ? new Color(100, 140, 180, (int) (outlineAlpha * alphaMultiplier))
+                : new Color(155, 155, 155, (int) (outlineAlpha * alphaMultiplier));
         Render2D.outline(boxX, boxY, INPUT_BOX_WIDTH, INPUT_BOX_HEIGHT, 0.5f, outlineColor.getRGB(), 3f);
 
         renderTextContent(boxX, boxY, deltaTime);
@@ -127,7 +127,7 @@ public class TextComponent extends AbstractSettingComponent {
 
         textScrollOffset = lerp(textScrollOffset, targetScrollOffset, deltaTime * SCROLL_ANIMATION_SPEED);
 
-        Scissor.enable(boxX + 2, boxY, INPUT_BOX_WIDTH - 4, INPUT_BOX_HEIGHT,2);
+        Scissor.enable(boxX + 2, boxY, INPUT_BOX_WIDTH - 4, INPUT_BOX_HEIGHT, 2);
 
         if (text.isEmpty() && !focused) {
             Fonts.BOLD.draw("Enter text...", textAreaX, textY, 5, applyAlpha(new Color(100, 100, 105, 100)).getRGB());
@@ -141,21 +141,21 @@ public class TextComponent extends AbstractSettingComponent {
                 float selectionX = textAreaX + Fonts.BOLD.getWidth(beforeSelection, 5) - textScrollOffset;
                 float selectionWidth = Fonts.BOLD.getWidth(selection, 5);
 
-                int selAlpha = (int)(100 * selectionAnimation * alphaMultiplier);
+                int selAlpha = (int) (100 * selectionAnimation * alphaMultiplier);
                 Render2D.rect(selectionX, boxY + 2, selectionWidth, INPUT_BOX_HEIGHT - 4,
                         new Color(100, 140, 180, selAlpha).getRGB(), 2f);
             }
 
-            int textAlpha = (int)((160 + focusAnimation * 60) * alphaMultiplier);
+            int textAlpha = (int) ((160 + focusAnimation * 60) * alphaMultiplier);
             Fonts.BOLD.draw(displayText, textAreaX - textScrollOffset, textY, 5,
                     new Color(210, 210, 220, textAlpha).getRGB());
 
             if (focused && !hasSelection()) {
-                float cursorAlpha = (float)(Math.sin(cursorBlinkAnimation * Math.PI * 2) * 0.5 + 0.5);
+                float cursorAlpha = (float) (Math.sin(cursorBlinkAnimation * Math.PI * 2) * 0.5 + 0.5);
                 if (cursorAlpha > 0.3f) {
                     String beforeCursor = text.substring(0, cursorPosition);
                     float cursorXPos = textAreaX + Fonts.BOLD.getWidth(beforeCursor, 5) - textScrollOffset;
-                    int cursorAlphaInt = (int)(255 * cursorAlpha * focusAnimation * alphaMultiplier);
+                    int cursorAlphaInt = (int) (255 * cursorAlpha * focusAnimation * alphaMultiplier);
                     Render2D.rect(cursorXPos, boxY + 2, 0.5f, INPUT_BOX_HEIGHT - 4,
                             new Color(180, 180, 185, cursorAlphaInt).getRGB(), 0f);
                 }
@@ -455,7 +455,7 @@ public class TextComponent extends AbstractSettingComponent {
     private int getCursorIndexAt(double mouseX) {
         float boxX = x + width - INPUT_BOX_WIDTH - 2;
         float textAreaX = boxX + TEXT_PADDING;
-        float relativeX = (float)(mouseX - textAreaX + textScrollOffset);
+        float relativeX = (float) (mouseX - textAreaX + textScrollOffset);
 
         if (relativeX <= 0) return 0;
 

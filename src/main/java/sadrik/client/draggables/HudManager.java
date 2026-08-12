@@ -4,7 +4,6 @@ import net.minecraft.client.gui.DrawContext;
 import sadrik.events.impl.PacketEvent;
 import sadrik.modules.impl.render.Hud;
 import sadrik.screens.hud.*;
-import sadrik.screens.hud.EventFinderHud;
 import sadrik.util.config.impl.drag.DragConfig;
 
 import java.util.ArrayList;

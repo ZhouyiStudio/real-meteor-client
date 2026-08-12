@@ -73,7 +73,7 @@ public class BindComponent extends AbstractSettingComponent {
         if (listening) {
             pulseAnimation += deltaTime * 4f;
             if (pulseAnimation > Math.PI * 2) {
-                pulseAnimation -= (float)(Math.PI * 2);
+                pulseAnimation -= (float) (Math.PI * 2);
             }
         } else {
             pulseAnimation = lerp(pulseAnimation, 0f, deltaTime * ANIMATION_SPEED);
@@ -90,7 +90,7 @@ public class BindComponent extends AbstractSettingComponent {
 
         textChangeAnimation = lerp(textChangeAnimation, 1f, deltaTime * FAST_ANIMATION_SPEED);
 
-        int iconAlpha = (int)(200 * alphaMultiplier);
+        int iconAlpha = (int) (200 * alphaMultiplier);
         Fonts.GUI_ICONS.draw("L", x + 1.5f, y + height / 2 - 6f, 6, new Color(210, 210, 210, iconAlpha).getRGB());
 
         Fonts.BOLD.draw(getSetting().getName(), x + 9.5f, y + height / 2 - 7.5f, 6, applyAlpha(new Color(210, 210, 220, 200)).getRGB());
@@ -112,15 +112,15 @@ public class BindComponent extends AbstractSettingComponent {
         float scaledX = bindBoxX - (scaledWidth - BIND_BOX_WIDTH) / 2;
         float scaledY = bindBoxY - (scaledHeight - BIND_BOX_HEIGHT) / 2;
 
-        int bgAlpha = (int)(25 + bindHoverAnimation * 15 + listeningAnimation * 20);
+        int bgAlpha = (int) (25 + bindHoverAnimation * 15 + listeningAnimation * 20);
         Color bgColor;
         if (listening) {
-            float pulse = (float)(Math.sin(pulseAnimation) * 0.15 + 0.85);
+            float pulse = (float) (Math.sin(pulseAnimation) * 0.15 + 0.85);
             bgColor = new Color(
-                    (int)(60 + 40 * pulse),
-                    (int)(80 + 40 * pulse),
-                    (int)(120 + 35 * pulse),
-                    (int)(bgAlpha * alphaMultiplier)
+                    (int) (60 + 40 * pulse),
+                    (int) (80 + 40 * pulse),
+                    (int) (120 + 35 * pulse),
+                    (int) (bgAlpha * alphaMultiplier)
             );
         } else if (bindSetting.getKey() != GLFW.GLFW_KEY_UNKNOWN && bindSetting.getKey() != -1) {
             bgColor = applyAlpha(new Color(40, 60, 50, bgAlpha));
@@ -134,15 +134,15 @@ public class BindComponent extends AbstractSettingComponent {
         Color outlineColor;
 
         if (listening) {
-            float pulse = (float)(Math.sin(pulseAnimation) * 0.3 + 0.7);
+            float pulse = (float) (Math.sin(pulseAnimation) * 0.3 + 0.7);
             outlineAlpha = 150 * pulse * listeningAnimation;
-            outlineColor = new Color(120, 160, 220, (int)(outlineAlpha * alphaMultiplier));
+            outlineColor = new Color(120, 160, 220, (int) (outlineAlpha * alphaMultiplier));
         } else if (bindSetting.getKey() != GLFW.GLFW_KEY_UNKNOWN && bindSetting.getKey() != -1) {
             outlineAlpha = 80 + bindHoverAnimation * 40;
-            outlineColor = new Color(100, 160, 120, (int)(outlineAlpha * alphaMultiplier));
+            outlineColor = new Color(100, 160, 120, (int) (outlineAlpha * alphaMultiplier));
         } else {
             outlineAlpha = 60 + bindHoverAnimation * 40;
-            outlineColor = new Color(120, 120, 125, (int)(outlineAlpha * alphaMultiplier));
+            outlineColor = new Color(120, 120, 125, (int) (outlineAlpha * alphaMultiplier));
         }
 
         Render2D.outline(scaledX, scaledY, scaledWidth, scaledHeight, 0.5f, outlineColor.getRGB(), 3f);
@@ -160,14 +160,14 @@ public class BindComponent extends AbstractSettingComponent {
 
         Color textColor;
         if (listening) {
-            float pulse = (float)(Math.sin(pulseAnimation * 2) * 0.2 + 0.8);
-            int alpha = (int)(220 * pulse * alphaMultiplier);
+            float pulse = (float) (Math.sin(pulseAnimation * 2) * 0.2 + 0.8);
+            int alpha = (int) (220 * pulse * alphaMultiplier);
             textColor = new Color(180, 200, 240, alpha);
         } else if (bindSetting.getKey() != GLFW.GLFW_KEY_UNKNOWN && bindSetting.getKey() != -1) {
-            int alpha = (int)(200 * alphaMultiplier);
+            int alpha = (int) (200 * alphaMultiplier);
             textColor = new Color(140, 200, 150, alpha);
         } else {
-            int alpha = (int)(150 * alphaMultiplier);
+            int alpha = (int) (150 * alphaMultiplier);
             textColor = new Color(140, 140, 150, alpha);
         }
 
@@ -183,7 +183,7 @@ public class BindComponent extends AbstractSettingComponent {
                         textColor.getRed(),
                         textColor.getGreen(),
                         textColor.getBlue(),
-                        (int)(textColor.getAlpha() * oldAlpha)
+                        (int) (textColor.getAlpha() * oldAlpha)
                 );
                 Fonts.BOLD.drawCentered(previousBindText, centerX, textY + oldOffsetY, 5, oldColor.getRGB());
             }
@@ -192,7 +192,7 @@ public class BindComponent extends AbstractSettingComponent {
                     textColor.getRed(),
                     textColor.getGreen(),
                     textColor.getBlue(),
-                    (int)(textColor.getAlpha() * newAlpha)
+                    (int) (textColor.getAlpha() * newAlpha)
             );
             Fonts.BOLD.drawCentered(currentBindText, centerX, textY + newOffsetY, 5, newColor.getRGB());
         } else {
@@ -209,10 +209,10 @@ public class BindComponent extends AbstractSettingComponent {
 
         for (int i = 0; i < 3; i++) {
             float phase = pulseAnimation + i * 0.5f;
-            float pulse = (float)(Math.sin(phase * 2) * 0.5 + 0.5);
+            float pulse = (float) (Math.sin(phase * 2) * 0.5 + 0.5);
             float currentDotSize = dotSize * (0.5f + pulse * 0.5f);
 
-            int alpha = (int)(150 * (0.3f + pulse * 0.7f) * listeningAnimation * alphaMultiplier);
+            int alpha = (int) (150 * (0.3f + pulse * 0.7f) * listeningAnimation * alphaMultiplier);
 
             float dotX = startX + i * dotSpacing + (dotSize - currentDotSize) / 2;
             float adjustedDotY = dotY + (dotSize - currentDotSize) / 2;

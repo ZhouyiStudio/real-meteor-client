@@ -70,7 +70,8 @@ public class FreeCam extends ModuleStructure {
             case PlayerMoveC2SPacket move when freezeSetting.isValue() -> e.cancel();
             case PlayerRespawnS2CPacket respawn -> setState(false);
             case GameJoinS2CPacket join -> setState(false);
-            default -> {}
+            default -> {
+            }
         }
     }
 

@@ -119,7 +119,7 @@ public class Arc2D {
     private static int[] normalizeColors(int[] colors) {
         if (colors.length == 1) {
             int c = colors[0];
-            return new int[] { c, c, c, c, c, c, c, c, c };
+            return new int[]{c, c, c, c, c, c, c, c, c};
         }
         if (colors.length >= 9)
             return colors;

@@ -3,9 +3,6 @@ package sadrik;
 import lombok.Getter;
 import net.fabricmc.api.ClientModInitializer;
 import sadrik.manager.Manager;
-import sadrik.util.mods.config.wave.HeartbeatManager;
-import antidaunleak.api.UserProfile;
-import antidaunleak.api.annotation.Native;
 
 public class Initialization implements ClientModInitializer {
 

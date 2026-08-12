@@ -103,8 +103,8 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
         ci.cancel();
     }
 
-    @ModifyExpressionValue(method = { "sendMovementPackets",
-            "tick" }, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getYaw()F"))
+    @ModifyExpressionValue(method = {"sendMovementPackets",
+            "tick"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getYaw()F"))
     private float hookSilentRotationYaw(float original) {
         if (mc.player != null && AngleConnection.INSTANCE.getRotation() != null) {
             float currentYaw = AngleConnection.INSTANCE.getRotation().getYaw();
@@ -128,8 +128,8 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
         return original;
     }
 
-    @ModifyExpressionValue(method = { "sendMovementPackets",
-            "tick" }, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getPitch()F"))
+    @ModifyExpressionValue(method = {"sendMovementPackets",
+            "tick"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getPitch()F"))
     private float hookSilentRotationPitch(float original) {
         if (AngleConnection.INSTANCE.getRotation() != null) {
             return AngleConnection.INSTANCE.getRotation().getPitch();

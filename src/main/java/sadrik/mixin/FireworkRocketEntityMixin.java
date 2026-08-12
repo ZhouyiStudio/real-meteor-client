@@ -17,7 +17,9 @@ import sadrik.modules.impl.combat.aura.AngleConnection;
 @Mixin(FireworkRocketEntity.class)
 public class FireworkRocketEntityMixin implements IMinecraft {
 
-    @Shadow @Nullable private LivingEntity shooter;
+    @Shadow
+    @Nullable
+    private LivingEntity shooter;
 
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getRotationVector()Lnet/minecraft/util/math/Vec3d;"))
     public Vec3d getRotationVectorHook(LivingEntity instance, Operation<Vec3d> original) {

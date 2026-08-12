@@ -1,10 +1,6 @@
 package sadrik.util.config.impl.account;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import net.minecraft.util.Identifier;
 import sadrik.screens.account.AccountEntry;
 import sadrik.util.config.impl.consolelogger.Logger;
@@ -32,7 +28,8 @@ public class AccountConfig {
         Path configDir = Paths.get("Sadrik", "configs");
         try {
             Files.createDirectories(configDir);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         configPath = configDir.resolve("accounts.json");
     }
 
@@ -102,7 +99,8 @@ public class AccountConfig {
                     if (!skinStr.isEmpty()) {
                         try {
                             skin = Identifier.of(skinStr);
-                        } catch (Exception ignored) {}
+                        } catch (Exception ignored) {
+                        }
                     }
 
                     AccountEntry entry = new AccountEntry(name, date, skin, pinned, originalIndex);

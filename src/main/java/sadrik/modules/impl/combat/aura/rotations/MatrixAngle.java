@@ -1,5 +1,8 @@
 package sadrik.modules.impl.combat.aura.rotations;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import sadrik.Initialization;
 import sadrik.modules.impl.combat.Aura;
 import sadrik.modules.impl.combat.aura.Angle;
@@ -11,9 +14,6 @@ import sadrik.modules.impl.combat.aura.target.RaycastAngle;
 import sadrik.modules.impl.combat.aura.target.Vector;
 import sadrik.util.move.MoveUtil;
 import sadrik.util.timer.StopWatch;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 
 import java.security.SecureRandom;
 
@@ -28,7 +28,7 @@ public class MatrixAngle extends RotateConstructor {
         Aura aura = Aura.getInstance();
         StopWatch attackTimer = attackHandler.getAttackTimer();
         boolean canAttack = entity != null && attackHandler.canAttack(aura.getConfig(), 0);
-        if (entity !=null && canAttack) {
+        if (entity != null && canAttack) {
             Vec3d aimPoint = Vector.hitbox(entity, 1, entity.isOnGround() ? 0.9F : 1.4F, 1, 2);
             targetAngle = MathAngle.calculateAngle(aimPoint);
         }

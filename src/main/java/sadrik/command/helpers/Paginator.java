@@ -12,8 +12,8 @@ import java.util.function.Function;
 import static sadrik.command.impl.HelpCommand.getLine;
 
 /**
- *  © 2026 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2026 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 public class Paginator<T> {

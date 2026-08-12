@@ -11,28 +11,26 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.scoreboard.*;
-import net.minecraft.scoreboard.number.StyledNumberFormat;
-import net.minecraft.text.MutableText;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
 import sadrik.IMinecraft;
 import sadrik.modules.impl.combat.aura.Angle;
 import sadrik.modules.impl.combat.aura.MathAngle;
 import sadrik.modules.module.setting.implement.BindSetting;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -74,7 +72,7 @@ public class PlayerInteractionHelper implements IMinecraft {
 //    }
 
     public String getHealthString(float hp) {
-        return String.format("%.1f", hp).replace(",",".").replace(".0","");
+        return String.format("%.1f", hp).replace(",", ".").replace(".0", "");
     }
 
 //    public float getHealth(LivingEntity entity) {
@@ -95,18 +93,18 @@ public class PlayerInteractionHelper implements IMinecraft {
 
     public void jump() {
         if (mc.player.isSprinting()) {
-            float g = mc.player.getYaw() * ((float)Math.PI / 180F);
+            float g = mc.player.getYaw() * ((float) Math.PI / 180F);
             mc.player.addVelocityInternal(new Vec3d(-MathHelper.sin(g) * 0.2F, 0.0F, MathHelper.cos(g) * 0.2F));
         }
         mc.player.velocityDirty = true;
     }
 
     public List<BlockPos> getCube(BlockPos center, float radius) {
-        return getCube(center, radius,radius,true);
+        return getCube(center, radius, radius, true);
     }
 
     public List<BlockPos> getCube(BlockPos center, float radiusXZ, float radiusY) {
-        return getCube(center,radiusXZ,radiusY,true);
+        return getCube(center, radiusXZ, radiusY, true);
     }
 
     public List<BlockPos> getCube(BlockPos center, float radiusXZ, float radiusY, boolean down) {
@@ -162,11 +160,11 @@ public class PlayerInteractionHelper implements IMinecraft {
     }
 
     public boolean isBoxInBlock(Box box, Block block) {
-        return isBox(box,pos -> mc.world.getBlockState(pos).getBlock().equals(block));
+        return isBox(box, pos -> mc.world.getBlockState(pos).getBlock().equals(block));
     }
 
     public boolean isBoxInBlocks(Box box, List<Block> blocks) {
-        return isBox(box,pos -> blocks.contains(mc.world.getBlockState(pos).getBlock()));
+        return isBox(box, pos -> blocks.contains(mc.world.getBlockState(pos).getBlock()));
     }
 
     public boolean isBox(Box box, Predicate<BlockPos> pos) {
@@ -184,8 +182,10 @@ public class PlayerInteractionHelper implements IMinecraft {
 
     public boolean isKey(InputUtil.Type type, int keyCode) {
         if (keyCode != -1) switch (type) {
-            case InputUtil.Type.KEYSYM: return GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == 1;
-            case InputUtil.Type.MOUSE: return GLFW.glfwGetMouseButton(mc.getWindow().getHandle(), keyCode) == 1;
+            case InputUtil.Type.KEYSYM:
+                return GLFW.glfwGetKey(mc.getWindow().getHandle(), keyCode) == 1;
+            case InputUtil.Type.MOUSE:
+                return GLFW.glfwGetMouseButton(mc.getWindow().getHandle(), keyCode) == 1;
         }
         return false;
     }
@@ -198,6 +198,11 @@ public class PlayerInteractionHelper implements IMinecraft {
         return state.isAir() || state.getBlock().equals(Blocks.CAVE_AIR) || state.getBlock().equals(Blocks.VOID_AIR);
     }
 
-    public boolean isChat(Screen screen) {return screen instanceof ChatScreen;}
-    public boolean nullCheck() {return mc.player == null || mc.world == null;}
+    public boolean isChat(Screen screen) {
+        return screen instanceof ChatScreen;
+    }
+
+    public boolean nullCheck() {
+        return mc.player == null || mc.world == null;
+    }
 }

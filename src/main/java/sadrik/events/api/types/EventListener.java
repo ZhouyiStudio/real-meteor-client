@@ -29,7 +29,8 @@ public class EventListener implements Listener {
                 default -> serverSprint;
             };
             case UpdateSelectedSlotC2SPacket slot -> selectedSlot = slot.getSelectedSlot();
-            default -> {}
+            default -> {
+            }
         }
 
         Initialization.getInstance().getManager().getAttackPerpetrator().onPacket(e);

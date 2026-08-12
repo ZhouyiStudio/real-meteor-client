@@ -79,7 +79,8 @@ public class ConfigCommand extends Command {
                 if (args.length > 1) {
                     try {
                         page = Integer.parseInt(args[1]);
-                    } catch (NumberFormatException ignored) {}
+                    } catch (NumberFormatException ignored) {
+                    }
                 }
 
                 List<String> configs = getConfigs();
@@ -195,7 +196,8 @@ public class ConfigCommand extends Command {
                             configs.add(name.substring(0, name.length() - 5));
                         });
             }
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
         return configs;
     }
 }

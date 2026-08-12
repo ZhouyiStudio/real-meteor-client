@@ -5,8 +5,8 @@ import sadrik.screens.clickgui.impl.configs.ConfigsRenderer;
 import sadrik.screens.clickgui.impl.configs.handler.ConfigAnimationHandler;
 import sadrik.screens.clickgui.impl.configs.handler.ConfigDataHandler;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.Map;

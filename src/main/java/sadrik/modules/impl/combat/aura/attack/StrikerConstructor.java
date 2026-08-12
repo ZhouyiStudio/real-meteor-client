@@ -37,6 +37,7 @@ public class StrikerConstructor implements IMinecraft {
     public void onUsingItem(UsingItemEvent e) {
         attackHandler.onUsingItem(e);
     }
+
     @Getter
     @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
     public static class AttackPerpetratorConfigurable {

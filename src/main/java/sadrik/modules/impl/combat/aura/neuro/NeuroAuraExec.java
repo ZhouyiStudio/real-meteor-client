@@ -1,18 +1,18 @@
 package sadrik.modules.impl.combat.aura.neuro;
 
-import sadrik.modules.impl.combat.aura.attack.StrikeManager;
-import sadrik.modules.impl.combat.aura.attack.StrikerConstructor;
-import sadrik.modules.impl.combat.aura.MathAngle;
-import sadrik.modules.impl.combat.aura.Angle;
-import sadrik.modules.impl.combat.aura.AngleConfig;
-import sadrik.modules.impl.combat.aura.AngleConnection;
-import sadrik.modules.impl.combat.Aura;
-import sadrik.util.math.TaskPriority;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import sadrik.modules.impl.combat.Aura;
+import sadrik.modules.impl.combat.aura.Angle;
+import sadrik.modules.impl.combat.aura.AngleConfig;
+import sadrik.modules.impl.combat.aura.AngleConnection;
+import sadrik.modules.impl.combat.aura.MathAngle;
+import sadrik.modules.impl.combat.aura.attack.StrikeManager;
+import sadrik.modules.impl.combat.aura.attack.StrikerConstructor;
+import sadrik.util.math.TaskPriority;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -480,10 +480,10 @@ public final class NeuroAuraExec {
     }
 
     public boolean tryApplyExecRotation(Aura a,
-                                 StrikerConstructor.AttackPerpetratorConfigurable config,
-                                 StrikeManager attackHandler,
-                                 AngleConnection controller,
-                                 AngleConfig rotationConfig) {
+                                        StrikerConstructor.AttackPerpetratorConfigurable config,
+                                        StrikeManager attackHandler,
+                                        AngleConnection controller,
+                                        AngleConfig rotationConfig) {
         if (a == null || !a.neuroExec()) return false;
         if (a.getTarget() == null) return false;
         if (controller == null || rotationConfig == null) return false;

@@ -5,8 +5,8 @@ import org.lwjgl.glfw.GLFW;
 import sadrik.modules.module.setting.implement.ColorSetting;
 import sadrik.util.interfaces.AbstractSettingComponent;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 
@@ -139,7 +139,7 @@ public class ColorComponent extends AbstractSettingComponent {
     }
 
     private Color applyContentAlpha(Color color) {
-        int newAlpha = Math.max(0, Math.min(255, (int)(color.getAlpha() * alphaMultiplier * contentAlpha)));
+        int newAlpha = Math.max(0, Math.min(255, (int) (color.getAlpha() * alphaMultiplier * contentAlpha)));
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), newAlpha);
     }
 
@@ -148,7 +148,7 @@ public class ColorComponent extends AbstractSettingComponent {
         int r = (color >> 16) & 0xFF;
         int g = (color >> 8) & 0xFF;
         int b = color & 0xFF;
-        int newAlpha = Math.max(0, Math.min(255, (int)(a * alphaMultiplier * contentAlpha)));
+        int newAlpha = Math.max(0, Math.min(255, (int) (a * alphaMultiplier * contentAlpha)));
         return (newAlpha << 24) | (r << 16) | (g << 8) | b;
     }
 
@@ -300,7 +300,7 @@ public class ColorComponent extends AbstractSettingComponent {
         hueHandleAnimation = lerp(hueHandleAnimation, draggingHue ? 1f : 0f, deltaTime * FAST_ANIMATION_SPEED);
         alphaHandleAnimation = lerp(alphaHandleAnimation, draggingAlpha ? 1f : 0f, deltaTime * FAST_ANIMATION_SPEED);
 
-        int iconAlpha = (int)(200 * alphaMultiplier);
+        int iconAlpha = (int) (200 * alphaMultiplier);
         Fonts.GUI_ICONS.draw("R", x + 0.5f, y + height / 2 - 11.5f, 16, new Color(210, 210, 210, iconAlpha).getRGB());
 
         Fonts.BOLD.draw(colorSetting.getName(), x + 11.5f, y + height / 2 - 6.5f, 6, applyAlpha(new Color(210, 210, 220, 200)).getRGB());
@@ -328,7 +328,7 @@ public class ColorComponent extends AbstractSettingComponent {
         int colorValue = getDisplayColor();
         Color previewColor = new Color(colorValue, true);
         Render2D.rect(scaledX + 0.5f, scaledY + 0.5f, 9, 9, applyAlpha(previewColor).getRGB(), 15);
-        int outlineAlpha = clamp((int)((255 + previewHoverAnimation * 60) * alphaMultiplier));
+        int outlineAlpha = clamp((int) ((255 + previewHoverAnimation * 60) * alphaMultiplier));
 
         Render2D.outline(scaledX, scaledY, 10, 10, 1f, new Color(125, 125, 125, outlineAlpha).getRGB(), 15);
     }
@@ -341,13 +341,13 @@ public class ColorComponent extends AbstractSettingComponent {
         float totalExpandedHeight = PALETTE_SIZE + SPACING + 18 + SPACING;
         float visibleHeight = totalExpandedHeight * expandAnimation;
 
-        int outlineAlpha = clamp((int)(60 * expandAnimation * contentAlpha * alphaMultiplier));
+        int outlineAlpha = clamp((int) (60 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.outline(pickerX, pickerY, pickerWidth, visibleHeight + 2, 0.5f,
                 new Color(80, 80, 85, outlineAlpha).getRGB(), 4f);
 
         if (expandAnimation < 0.3f || contentAlpha < 0.01f) return;
 
-        Scissor.enable(pickerX, pickerY, pickerWidth, visibleHeight,2);
+        Scissor.enable(pickerX, pickerY, pickerWidth, visibleHeight, 2);
 
         float contentX = pickerX + SPACING;
         float contentY = pickerY + SPACING;
@@ -391,7 +391,7 @@ public class ColorComponent extends AbstractSettingComponent {
         float handleY = paletteY + (1f - displayBrightness) * paletteHeight;
         float handleSize = 6f + paletteHandleAnimation * 2f;
 
-        int handleOutlineAlpha = clamp((int)(255 * expandAnimation * contentAlpha * alphaMultiplier));
+        int handleOutlineAlpha = clamp((int) (255 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.rect(handleX - handleSize / 2, handleY - handleSize / 2, handleSize, handleSize,
                 new Color(255, 255, 255, handleOutlineAlpha).getRGB(), handleSize / 2);
 
@@ -404,29 +404,29 @@ public class ColorComponent extends AbstractSettingComponent {
     private void renderHueSlider(float sliderX, float sliderY, float sliderWidth, float sliderHeight, int mouseX, int mouseY) {
         int[] hueColors = {
                 Color.HSBtoRGB(0f, 1f, 1f),
-                Color.HSBtoRGB(1f/6f, 1f, 1f),
-                Color.HSBtoRGB(2f/6f, 1f, 1f),
-                Color.HSBtoRGB(3f/6f, 1f, 1f),
-                Color.HSBtoRGB(4f/6f, 1f, 1f),
-                Color.HSBtoRGB(5f/6f, 1f, 1f),
+                Color.HSBtoRGB(1f / 6f, 1f, 1f),
+                Color.HSBtoRGB(2f / 6f, 1f, 1f),
+                Color.HSBtoRGB(3f / 6f, 1f, 1f),
+                Color.HSBtoRGB(4f / 6f, 1f, 1f),
+                Color.HSBtoRGB(5f / 6f, 1f, 1f),
                 Color.HSBtoRGB(1f, 1f, 1f)
         };
 
         float segmentHeight = sliderHeight / 6f;
 
-        int[] colorsTop = { applyContentAlpha(new Color(hueColors[0])).getRGB(), applyContentAlpha(new Color(hueColors[0])).getRGB(), applyContentAlpha(new Color(hueColors[1])).getRGB(), applyContentAlpha(new Color(hueColors[1])).getRGB() };
+        int[] colorsTop = {applyContentAlpha(new Color(hueColors[0])).getRGB(), applyContentAlpha(new Color(hueColors[0])).getRGB(), applyContentAlpha(new Color(hueColors[1])).getRGB(), applyContentAlpha(new Color(hueColors[1])).getRGB()};
         Render2D.gradientRect(sliderX, sliderY, sliderWidth, segmentHeight, colorsTop, 2f, 2f, 0f, 0f);
 
         for (int i = 1; i < 5; i++) {
             float segY = sliderY + i * segmentHeight;
-            int[] colors = { applyContentAlpha(new Color(hueColors[i])).getRGB(), applyContentAlpha(new Color(hueColors[i])).getRGB(), applyContentAlpha(new Color(hueColors[i + 1])).getRGB(), applyContentAlpha(new Color(hueColors[i + 1])).getRGB() };
+            int[] colors = {applyContentAlpha(new Color(hueColors[i])).getRGB(), applyContentAlpha(new Color(hueColors[i])).getRGB(), applyContentAlpha(new Color(hueColors[i + 1])).getRGB(), applyContentAlpha(new Color(hueColors[i + 1])).getRGB()};
             Render2D.gradientRect(sliderX, segY - 0.5f, sliderWidth, segmentHeight + 0.5f, colors, 0f);
         }
 
-        int[] colorsBottom = { applyContentAlpha(new Color(hueColors[5])).getRGB(), applyContentAlpha(new Color(hueColors[5])).getRGB(), applyContentAlpha(new Color(hueColors[6])).getRGB(), applyContentAlpha(new Color(hueColors[6])).getRGB() };
+        int[] colorsBottom = {applyContentAlpha(new Color(hueColors[5])).getRGB(), applyContentAlpha(new Color(hueColors[5])).getRGB(), applyContentAlpha(new Color(hueColors[6])).getRGB(), applyContentAlpha(new Color(hueColors[6])).getRGB()};
         Render2D.gradientRect(sliderX, sliderY + 5 * segmentHeight - 0.5f, sliderWidth, segmentHeight, colorsBottom, 0f, 0f, 2f, 2f);
 
-        int hueOutlineAlpha = clamp((int)(80 * expandAnimation * contentAlpha * alphaMultiplier));
+        int hueOutlineAlpha = clamp((int) (80 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.outline(sliderX, sliderY, sliderWidth, sliderHeight, 0.5f,
                 new Color(100, 100, 105, hueOutlineAlpha).getRGB(), 3f);
 
@@ -434,16 +434,16 @@ public class ColorComponent extends AbstractSettingComponent {
         float handleHeight = 3f + hueHandleAnimation * 1f;
         float handleWidth = sliderWidth + 2f;
 
-        int handleAlpha = clamp((int)(255 * expandAnimation * contentAlpha * alphaMultiplier));
+        int handleAlpha = clamp((int) (255 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.rect(sliderX - 1, handleY - handleHeight / 2, handleWidth, handleHeight,
                 new Color(255, 255, 255, handleAlpha).getRGB(), 1.5f);
-        int handleShadowAlpha = clamp((int)(100 * expandAnimation * contentAlpha * alphaMultiplier));
+        int handleShadowAlpha = clamp((int) (100 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.outline(sliderX - 1, handleY - handleHeight / 2, handleWidth, handleHeight, 0.5f,
                 new Color(0, 0, 0, handleShadowAlpha).getRGB(), 1.5f);
     }
 
     private void renderAlphaSlider(float sliderX, float sliderY, float sliderWidth, float sliderHeight, int mouseX, int mouseY) {
-        int checkAlpha = clamp((int)(150 * expandAnimation * contentAlpha * alphaMultiplier));
+        int checkAlpha = clamp((int) (150 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.rect(sliderX, sliderY, sliderWidth, sliderHeight, new Color(180, 180, 180, checkAlpha).getRGB(), 2f);
 
         int baseColor = getDisplayColorNoAlpha() & 0x00FFFFFF;
@@ -459,7 +459,7 @@ public class ColorComponent extends AbstractSettingComponent {
         };
         Render2D.gradientRect(sliderX, sliderY, sliderWidth, sliderHeight, alphaGradient, 2f);
 
-        int alphaOutlineAlpha = clamp((int)(80 * expandAnimation * contentAlpha * alphaMultiplier));
+        int alphaOutlineAlpha = clamp((int) (80 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.outline(sliderX, sliderY, sliderWidth, sliderHeight, 0.5f,
                 new Color(100, 100, 105, alphaOutlineAlpha).getRGB(), 3f);
 
@@ -467,16 +467,16 @@ public class ColorComponent extends AbstractSettingComponent {
         float handleHeight = 3f + alphaHandleAnimation * 1f;
         float handleWidth = sliderWidth + 2f;
 
-        int handleAlpha = clamp((int)(255 * expandAnimation * contentAlpha * alphaMultiplier));
+        int handleAlpha = clamp((int) (255 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.rect(sliderX - 1, handleY - handleHeight / 2, handleWidth, handleHeight,
                 new Color(255, 255, 255, handleAlpha).getRGB(), 1.5f);
-        int handleShadowAlpha = clamp((int)(100 * expandAnimation * contentAlpha * alphaMultiplier));
+        int handleShadowAlpha = clamp((int) (100 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.outline(sliderX - 1, handleY - handleHeight / 2, handleWidth, handleHeight, 0.5f,
                 new Color(0, 0, 0, handleShadowAlpha).getRGB(), 1.5f);
     }
 
     private Color applyContentAlpha(Color color, float extraAlpha) {
-        int newAlpha = Math.max(0, Math.min(255, (int)(color.getAlpha() * alphaMultiplier * contentAlpha * extraAlpha)));
+        int newAlpha = Math.max(0, Math.min(255, (int) (color.getAlpha() * alphaMultiplier * contentAlpha * extraAlpha)));
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), newAlpha);
     }
 
@@ -484,22 +484,22 @@ public class ColorComponent extends AbstractSettingComponent {
         boolean inputHovered = mouseX >= inputX && mouseX <= inputX + inputWidth &&
                 mouseY >= inputY && mouseY <= inputY + inputHeight;
 
-        int bgAlpha = clamp((int)((40 + hexInputAnimation * 20 + (inputHovered ? 10 : 0)) * expandAnimation * contentAlpha * alphaMultiplier));
+        int bgAlpha = clamp((int) ((40 + hexInputAnimation * 20 + (inputHovered ? 10 : 0)) * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.rect(inputX, inputY, inputWidth, inputHeight, new Color(35, 35, 40, bgAlpha).getRGB(), 3f);
 
-        int hexOutlineAlpha = clamp((int)((60 + hexInputAnimation * 80 + (inputHovered ? 20 : 0)) * expandAnimation * contentAlpha * alphaMultiplier));
+        int hexOutlineAlpha = clamp((int) ((60 + hexInputAnimation * 80 + (inputHovered ? 20 : 0)) * expandAnimation * contentAlpha * alphaMultiplier));
         Color outlineColor = hexInputActive
                 ? new Color(100, 140, 180, hexOutlineAlpha)
                 : new Color(80, 80, 85, hexOutlineAlpha);
         Render2D.outline(inputX, inputY, inputWidth, inputHeight, 0.5f, outlineColor.getRGB(), 3f);
 
-        int iconAlpha = clamp((int)(200 * expandAnimation * contentAlpha * alphaMultiplier));
+        int iconAlpha = clamp((int) (200 * expandAnimation * contentAlpha * alphaMultiplier));
         Fonts.GUI_ICONS.draw("V", inputX + 4, inputY + inputHeight / 2 - 7.5f, 12, new Color(210, 210, 210, iconAlpha).getRGB());
 
         String label = "HEX: ";
         float iconOffset = 10f;
         float labelWidth = Fonts.BOLD.getWidth(label, 5);
-        int labelAlpha = clamp((int)(150 * expandAnimation * contentAlpha * alphaMultiplier));
+        int labelAlpha = clamp((int) (150 * expandAnimation * contentAlpha * alphaMultiplier));
         Fonts.BOLD.draw(label, inputX + 4 + iconOffset, inputY + inputHeight / 2 - 2.5f, 5,
                 new Color(140, 140, 150, labelAlpha).getRGB());
 
@@ -516,21 +516,21 @@ public class ColorComponent extends AbstractSettingComponent {
             float selectionX = textStartX + Fonts.BOLD.getWidth(beforeSelection, 5);
             float selectionWidth = Fonts.BOLD.getWidth(selection, 5);
 
-            int selAlpha = clamp((int)(100 * hexSelectionAnimation * expandAnimation * contentAlpha * alphaMultiplier));
+            int selAlpha = clamp((int) (100 * hexSelectionAnimation * expandAnimation * contentAlpha * alphaMultiplier));
 //            Render2D.rect(selectionX - 1, inputY + 4.25f, selectionWidth + 2, inputHeight - 8,
 //                    new Color(100, 140, 180, selAlpha).getRGB(), 2f);
         }
 
-        int textAlpha = clamp((int)((180 + hexInputAnimation * 40) * expandAnimation * contentAlpha * alphaMultiplier));
+        int textAlpha = clamp((int) ((180 + hexInputAnimation * 40) * expandAnimation * contentAlpha * alphaMultiplier));
         Fonts.BOLD.draw("#" + displayText, textStartX, textY, 5,
                 new Color(210, 210, 220, textAlpha).getRGB());
 
         if (hexInputActive && !hasHexSelection()) {
-            float cursorAlpha = (float)(Math.sin(hexCursorBlinkAnimation * Math.PI * 2) * 0.5 + 0.5);
+            float cursorAlpha = (float) (Math.sin(hexCursorBlinkAnimation * Math.PI * 2) * 0.5 + 0.5);
             if (cursorAlpha > 0.3f) {
                 String beforeCursor = "#" + hexInputText.substring(0, hexCursorPosition);
                 float cursorX = textStartX + Fonts.BOLD.getWidth(beforeCursor, 5);
-                int cursorAlphaInt = clamp((int)(255 * cursorAlpha * hexInputAnimation * expandAnimation * contentAlpha * alphaMultiplier));
+                int cursorAlphaInt = clamp((int) (255 * cursorAlpha * hexInputAnimation * expandAnimation * contentAlpha * alphaMultiplier));
                 Render2D.rect(cursorX, inputY + 3, 0.5f, inputHeight - 6,
                         new Color(180, 180, 185, cursorAlphaInt).getRGB(), 0f);
             }
@@ -540,12 +540,12 @@ public class ColorComponent extends AbstractSettingComponent {
         float miniPreviewY = inputY + 3;
         float miniPreviewSize = inputHeight - 6;
 
-        int miniCheckAlpha = clamp((int)(120 * expandAnimation * contentAlpha * alphaMultiplier));
+        int miniCheckAlpha = clamp((int) (120 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.rect(miniPreviewX, miniPreviewY, miniPreviewSize, miniPreviewSize,
                 new Color(150, 150, 150, miniCheckAlpha).getRGB(), 3f);
         Render2D.rect(miniPreviewX, miniPreviewY, miniPreviewSize, miniPreviewSize,
                 applyContentAlpha(new Color(getDisplayColor(), true)).getRGB(), 3f);
-        int miniOutlineAlpha = clamp((int)(80 * expandAnimation * contentAlpha * alphaMultiplier));
+        int miniOutlineAlpha = clamp((int) (80 * expandAnimation * contentAlpha * alphaMultiplier));
         Render2D.outline(miniPreviewX, miniPreviewY, miniPreviewSize, miniPreviewSize, 0.5f,
                 new Color(80, 80, 85, miniOutlineAlpha).getRGB(), 3f);
     }
@@ -811,8 +811,8 @@ public class ColorComponent extends AbstractSettingComponent {
         float paletteWidth = contentWidth - slidersWidth - SPACING;
         float paletteX = contentX + slidersWidth + SPACING;
 
-        float saturation = (float)((mouseX - paletteX) / paletteWidth);
-        float brightness = 1f - (float)((mouseY - contentY) / PALETTE_SIZE);
+        float saturation = (float) ((mouseX - paletteX) / paletteWidth);
+        float brightness = 1f - (float) ((mouseY - contentY) / PALETTE_SIZE);
 
         colorSetting.setSaturation(saturation);
         colorSetting.setBrightness(brightness);
@@ -822,7 +822,7 @@ public class ColorComponent extends AbstractSettingComponent {
         float pickerY = y + height + SPACING;
         float contentY = pickerY + SPACING;
 
-        float hue = (float)((mouseY - contentY) / PALETTE_SIZE);
+        float hue = (float) ((mouseY - contentY) / PALETTE_SIZE);
         colorSetting.setHue(hue);
     }
 
@@ -830,7 +830,7 @@ public class ColorComponent extends AbstractSettingComponent {
         float pickerY = y + height + SPACING;
         float contentY = pickerY + SPACING;
 
-        float alpha = (float)((mouseY - contentY) / PALETTE_SIZE);
+        float alpha = (float) ((mouseY - contentY) / PALETTE_SIZE);
         colorSetting.setAlpha(alpha);
     }
 

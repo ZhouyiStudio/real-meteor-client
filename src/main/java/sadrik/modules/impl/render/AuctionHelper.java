@@ -154,5 +154,6 @@ public class AuctionHelper extends ModuleStructure {
         context.fill(x1, y1, x2, y2, color);
     }
 
-    private record SlotData(Slot slot, int price) {}
+    private record SlotData(Slot slot, int price) {
+    }
 }

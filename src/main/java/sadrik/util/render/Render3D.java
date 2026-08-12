@@ -2,7 +2,9 @@ package sadrik.util.render;
 
 import lombok.Setter;
 import lombok.experimental.UtilityClass;
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.RenderLayers;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Pair;
@@ -20,11 +22,7 @@ import sadrik.util.ColorUtil;
 import sadrik.util.math.MathUtils;
 import sadrik.util.render.сliemtpipeline.ClientPipelines;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @UtilityClass
 public class Render3D implements IMinecraft {

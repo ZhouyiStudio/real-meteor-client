@@ -188,7 +188,8 @@ public class FontPipeline {
                         currentColor = (0xFF << 24) | Integer.parseInt(hex, 16);
                         i += charCount + 7;
                         continue;
-                    } catch (Exception ignored) {}
+                    } catch (Exception ignored) {
+                    }
                 }
                 int code = "0123456789abcdefklmnor".indexOf(Character.toLowerCase((char) nextCodePoint));
                 if (code >= 0) {
@@ -289,7 +290,8 @@ public class FontPipeline {
                         currentColor = (0xFF << 24) | Integer.parseInt(hex, 16);
                         i += charCount + 7;
                         continue;
-                    } catch (Exception ignored) {}
+                    } catch (Exception ignored) {
+                    }
                 }
                 int code = "0123456789abcdefklmnor".indexOf(Character.toLowerCase((char) nextCodePoint));
                 if (code >= 0) {

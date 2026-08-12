@@ -16,8 +16,8 @@ public class ConfigCreateBoxRenderer {
     private float cursorBlink = 0f;
     private long lastUpdateTime = System.currentTimeMillis();
 
-    public ConfigCreateBoxRenderer(ConfigDataHandler dataHandler, 
-                                    ConfigNotificationRenderer notificationRenderer) {
+    public ConfigCreateBoxRenderer(ConfigDataHandler dataHandler,
+                                   ConfigNotificationRenderer notificationRenderer) {
         this.dataHandler = dataHandler;
         this.notificationRenderer = notificationRenderer;
     }
@@ -48,9 +48,9 @@ public class ConfigCreateBoxRenderer {
     }
 
     private void renderBackground(float x, float boxY, float alpha) {
-        Render2D.rect(x + 8, boxY, ConfigsRenderer.PANEL_WIDTH - 16, 32, 
+        Render2D.rect(x + 8, boxY, ConfigsRenderer.PANEL_WIDTH - 16, 32,
                 new Color(50, 50, 55, (int) (30 * alpha)).getRGB(), 5);
-        Render2D.outline(x + 8, boxY, ConfigsRenderer.PANEL_WIDTH - 16, 32, 0.5f, 
+        Render2D.outline(x + 8, boxY, ConfigsRenderer.PANEL_WIDTH - 16, 32, 0.5f,
                 new Color(80, 80, 85, (int) (100 * alpha)).getRGB(), 5);
     }
 
@@ -60,9 +60,9 @@ public class ConfigCreateBoxRenderer {
         float inputW = ConfigsRenderer.PANEL_WIDTH - 100;
         float inputH = 16;
 
-        Render2D.rect(inputX, inputY, inputW, inputH, 
+        Render2D.rect(inputX, inputY, inputW, inputH,
                 new Color(40, 40, 45, (int) (40 * alpha)).getRGB(), 4);
-        Render2D.outline(inputX, inputY, inputW, inputH, 0.5f, 
+        Render2D.outline(inputX, inputY, inputW, inputH, 0.5f,
                 new Color(70, 70, 75, (int) (80 * alpha)).getRGB(), 4);
 
         String configName = dataHandler.getNewConfigName();
@@ -94,9 +94,9 @@ public class ConfigCreateBoxRenderer {
         float saveW = 60;
         float saveH = 20;
 
-        Render2D.rect(saveX, saveY, saveW, saveH, 
+        Render2D.rect(saveX, saveY, saveW, saveH,
                 new Color(80, 140, 80, (int) (40 * alpha)).getRGB(), 4);
-        Render2D.outline(saveX, saveY, saveW, saveH, 0.5f, 
+        Render2D.outline(saveX, saveY, saveW, saveH, 0.5f,
                 new Color(100, 180, 100, (int) (80 * alpha)).getRGB(), 4);
 
         float textWidth = Fonts.BOLD.getWidth("Save", 5);
@@ -146,24 +146,24 @@ public class ConfigCreateBoxRenderer {
         String name = dataHandler.getNewConfigName();
 
         if (name.isEmpty()) {
-            notificationRenderer.show("Enter a config name", 
+            notificationRenderer.show("Enter a config name",
                     ConfigNotificationRenderer.NotificationType.ERROR);
             return;
         }
 
         if (name.equalsIgnoreCase("autoconfig")) {
-            notificationRenderer.show("This name is reserved", 
+            notificationRenderer.show("This name is reserved",
                     ConfigNotificationRenderer.NotificationType.ERROR);
             return;
         }
 
         if (dataHandler.saveConfig(name)) {
-            notificationRenderer.show("Config saved: " + name, 
+            notificationRenderer.show("Config saved: " + name,
                     ConfigNotificationRenderer.NotificationType.SUCCESS);
             dataHandler.clearNewConfigName();
             dataHandler.setCreating(false);
         } else {
-            notificationRenderer.show("Config already exists", 
+            notificationRenderer.show("Config already exists",
                     ConfigNotificationRenderer.NotificationType.ERROR);
         }
     }

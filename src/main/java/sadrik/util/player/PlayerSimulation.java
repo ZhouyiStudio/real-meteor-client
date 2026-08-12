@@ -2,17 +2,7 @@ package sadrik.util.player;
 
 import it.unimi.dsi.fastutil.objects.Object2DoubleArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.LadderBlock;
-import net.minecraft.block.TrapdoorBlock;
-import net.minecraft.block.PowderSnowBlock;
+import net.minecraft.block.*;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
@@ -30,13 +20,17 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.PlayerInput;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import sadrik.IMinecraft;
 import sadrik.util.move.MoveUtil;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class PlayerSimulation implements Simulation, IMinecraft {

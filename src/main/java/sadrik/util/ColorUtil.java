@@ -17,25 +17,29 @@ import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
 /**
- *  © 2025 Copyright Sadrik Client
- *        All Rights Reserved ®
+ * © 2025 Copyright Sadrik Client
+ * All Rights Reserved ®
  */
 
 @Getter
 @UtilityClass
 public class ColorUtil {
     public static int colorForRectsCustom$() {
-        return new Color(91, 63, 212,255).getRGB();
+        return new Color(91, 63, 212, 255).getRGB();
     }
+
     public static int colorForRectsBlack$() {
-        return new Color(26, 26, 26,255).getRGB();
+        return new Color(26, 26, 26, 255).getRGB();
     }
+
     public static int colorForTextWhite$() {
-        return new Color(255,255,255,255).getRGB();
+        return new Color(255, 255, 255, 255).getRGB();
     }
+
     public static int colorForTextCustom$() {
-        return  new Color(130, 100, 210,255).getRGB();
+        return new Color(130, 100, 210, 255).getRGB();
     }
+
     public static final int green = new Color(64, 255, 64).getRGB();
     public static final int yellow = new Color(255, 255, 64).getRGB();
     public static final int orange = new Color(255, 128, 32).getRGB();
@@ -87,7 +91,7 @@ public class ColorUtil {
     public final int YELLOW = getColor(255, 255, 0);
     public final int WHITE = getColor(255);
     public final int BLACK = getColor(0);
-    public final int HALF_BLACK = getColor(0,0.5F);
+    public final int HALF_BLACK = getColor(0, 0.5F);
     public final int LIGHT_RED = getColor(255, 85, 85);
 
     public static int applyAlpha(int color, int alpha) {
@@ -100,10 +104,12 @@ public class ColorUtil {
     }
 
     public static int applyAlpha(int color, float alpha) {
-        return applyAlpha(color, (int)(alpha * 255));
+        return applyAlpha(color, (int) (alpha * 255));
     }
 
-    public int red(int c) {return (c >> 16) & 0xFF;}
+    public int red(int c) {
+        return (c >> 16) & 0xFF;
+    }
 
     public int green(int c) {
         return (c >> 8) & 0xFF;
@@ -184,6 +190,7 @@ public class ColorUtil {
     public int multAlpha(int color, float percent01) {
         return getColor(red(color), green(color), blue(color), Math.round(alpha(color) * percent01));
     }
+
     public static int applyOpacity(int hex, int percent) {
         return applyOpacity(hex, 2.55f * Math.min(percent, 100));
     }
@@ -433,11 +440,11 @@ public class ColorUtil {
     }
 
     public int multRedAndAlpha(int color, float red, float alpha) {
-        return getColor(red(color),Math.min(255, Math.round(green(color) / red)), Math.min(255, Math.round(blue(color) / red)), Math.round(alpha(color) * alpha));
+        return getColor(red(color), Math.min(255, Math.round(green(color) / red)), Math.min(255, Math.round(blue(color) / red)), Math.round(alpha(color) * alpha));
     }
 
     public int multRed(int color, float percent01) {
-        return getColor(red(color),Math.min(255, Math.round(green(color) / percent01)), Math.min(255, Math.round(blue(color) / percent01)), alpha(color));
+        return getColor(red(color), Math.min(255, Math.round(green(color) / percent01)), Math.min(255, Math.round(blue(color) / percent01)), alpha(color));
     }
 
     public int multGreen(int color, float percent01) {
@@ -498,7 +505,7 @@ public class ColorUtil {
     }
 
     public int rgbaFloat(float r, float g, float b, float a) {
-        return (int) (MathHelper.clamp(a,0,1) * 255) << 24 | (int) (MathHelper.clamp(r,0,1) * 255) << 16 | (int) (MathHelper.clamp(g,0,1) * 255) << 8 | (int) (MathHelper.clamp(b,0,1) * 255);
+        return (int) (MathHelper.clamp(a, 0, 1) * 255) << 24 | (int) (MathHelper.clamp(r, 0, 1) * 255) << 16 | (int) (MathHelper.clamp(g, 0, 1) * 255) << 8 | (int) (MathHelper.clamp(b, 0, 1) * 255);
     }
 
     public int getColor(int red, int green, int blue, int alpha) {
@@ -552,23 +559,42 @@ public class ColorUtil {
         float m = v - c;
 
         float r, g, b;
-        if (h < 1f/6f) { r = c; g = x; b = 0; }
-        else if (h < 2f/6f) { r = x; g = c; b = 0; }
-        else if (h < 3f/6f) { r = 0; g = c; b = x; }
-        else if (h < 4f/6f) { r = 0; g = x; b = c; }
-        else if (h < 5f/6f) { r = x; g = 0; b = c; }
-        else { r = c; g = 0; b = x; }
+        if (h < 1f / 6f) {
+            r = c;
+            g = x;
+            b = 0;
+        } else if (h < 2f / 6f) {
+            r = x;
+            g = c;
+            b = 0;
+        } else if (h < 3f / 6f) {
+            r = 0;
+            g = c;
+            b = x;
+        } else if (h < 4f / 6f) {
+            r = 0;
+            g = x;
+            b = c;
+        } else if (h < 5f / 6f) {
+            r = x;
+            g = 0;
+            b = c;
+        } else {
+            r = c;
+            g = 0;
+            b = x;
+        }
 
-        int ri = (int)((r + m) * 255);
-        int gi = (int)((g + m) * 255);
-        int bi = (int)((b + m) * 255);
+        int ri = (int) ((r + m) * 255);
+        int gi = (int) ((g + m) * 255);
+        int bi = (int) ((b + m) * 255);
 
         return 0xFF000000 | (ri << 16) | (gi << 8) | bi;
     }
 
     public static int hsvToRgb(float h, float s, float v, float alpha) {
         int rgb = hsvToRgb(h, s, v);
-        int a = (int)(alpha * 255);
+        int a = (int) (alpha * 255);
         return (a << 24) | (rgb & 0x00FFFFFF);
     }
 
@@ -615,30 +641,49 @@ public class ColorUtil {
         return text == null || text.isEmpty() ? null : FORMATTING_CODE_PATTERN.matcher(text).replaceAll("");
     }
 
-    public int getMainGuiColor() {return new Color(20, 20, 24, 255).getRGB();}
-
-    public int getGuiRectColor(float alpha) {return multAlpha(new Color(0x1A1A1F).getRGB(),alpha);}
-    public int getGuiRectColor2(float alpha) {return multAlpha(new Color(0x1E1E26).getRGB(),alpha);}
-
-    public int getRect(float alpha) {return multAlpha(new Color(0,0,0,228).getRGB(),alpha);}
-
-    public int getRectDarker(float alpha) {
-        return multAlpha(new Color(0x18181E).getRGB(),alpha);
+    public int getMainGuiColor() {
+        return new Color(20, 20, 24, 255).getRGB();
     }
 
-    public int getText(float alpha) {return multAlpha(getText(),alpha);}
+    public int getGuiRectColor(float alpha) {
+        return multAlpha(new Color(0x1A1A1F).getRGB(), alpha);
+    }
 
-    public int getText() {return new Color(255,255,255,255).getRGB();}
+    public int getGuiRectColor2(float alpha) {
+        return multAlpha(new Color(0x1E1E26).getRGB(), alpha);
+    }
 
-    public int getText2() {return new Color(175, 175, 175,255).getRGB();}
+    public int getRect(float alpha) {
+        return multAlpha(new Color(0, 0, 0, 228).getRGB(), alpha);
+    }
+
+    public int getRectDarker(float alpha) {
+        return multAlpha(new Color(0x18181E).getRGB(), alpha);
+    }
+
+    public int getText(float alpha) {
+        return multAlpha(getText(), alpha);
+    }
+
+    public int getText() {
+        return new Color(255, 255, 255, 255).getRGB();
+    }
+
+    public int getText2() {
+        return new Color(175, 175, 175, 255).getRGB();
+    }
 
     public int getFriendColor() {
         return new Color(0x55FF55).getRGB();
     }
 
-    public int getOutline(float alpha, float bright) {return multBright(multAlpha(getOutline(),alpha),bright);}
+    public int getOutline(float alpha, float bright) {
+        return multBright(multAlpha(getOutline(), alpha), bright);
+    }
 
-    public int getOutline(float alpha) {return multAlpha(getOutline(), alpha);}
+    public int getOutline(float alpha) {
+        return multAlpha(getOutline(), alpha);
+    }
 
     public int getOutline() {
         return new Color(0x373746).getRGB();

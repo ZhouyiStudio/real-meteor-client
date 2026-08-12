@@ -8,9 +8,9 @@ import sadrik.client.draggables.AbstractHudElement;
 import sadrik.util.ColorUtil;
 import sadrik.util.animations.Direction;
 import sadrik.util.render.Render2D;
-import sadrik.util.render.shader.Scissor;
 import sadrik.util.render.font.Fonts;
 import sadrik.util.render.item.ItemRender;
+import sadrik.util.render.shader.Scissor;
 
 import java.awt.*;
 import java.util.*;

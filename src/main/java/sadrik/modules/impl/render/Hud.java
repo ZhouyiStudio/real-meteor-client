@@ -2,9 +2,10 @@ package sadrik.modules.impl.render;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import sadrik.modules.module.category.ModuleCategory;
 import sadrik.modules.module.ModuleStructure;
-import sadrik.modules.module.setting.implement.*;
+import sadrik.modules.module.category.ModuleCategory;
+import sadrik.modules.module.setting.implement.BooleanSetting;
+import sadrik.modules.module.setting.implement.MultiSelectSetting;
 import sadrik.util.Instance;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)

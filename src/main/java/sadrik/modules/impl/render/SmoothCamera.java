@@ -58,7 +58,7 @@ public class SmoothCamera extends ModuleStructure {
         }
 
         float dyaw = MathHelper.wrapDegrees(target.getYaw() - smoothYaw);
-        smoothYaw   += dyaw   * speed.getValue();
+        smoothYaw += dyaw * speed.getValue();
         smoothPitch += (target.getPitch() - smoothPitch) * speed.getValue();
 
         e.setAngle(new Angle(smoothYaw, smoothPitch));

@@ -8,7 +8,8 @@ import lombok.experimental.FieldDefaults;
 import net.minecraft.screen.slot.SlotActionType;
 import sadrik.events.api.events.callables.EventCancellable;
 
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ClickSlotEvent extends EventCancellable {
