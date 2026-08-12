@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "id": "sadrik",
+  "id": "worst",
   "version": "${version}",
-  "name": "sadrik client",
+  "name": "worst client",
   "description": "Custom Minecraft client with shader-based rendering",
   "authors": ["You"],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/sadrik/textures/capes/cape.png",
+  "icon": "assets/worst/textures/capes/cape.png",
   "environment": "client",
   "entrypoints": {
     "preLaunch": [
-      "sadrik.util.mods.config.wave.WaveCapesConfigOverride"
+      "worst.util.mods.config.wave.WaveCapesConfigOverride"
     ],
     "client": [
-      "sadrik.Initialization"
+      "worst.Initialization"
     ]
   },
   "mixins": [
