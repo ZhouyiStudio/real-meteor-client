@@ -1,10 +1,14 @@
 {
   "schemaVersion": 1,
-  "id": "worst",
+  "id": "meteor-client",
   "version": "${version}",
-  "name": "worst client",
-  "description": "Custom Minecraft client with shader-based rendering",
-  "authors": ["You"],
+  "name": "Meteor Client",
+  "description": "Based utility mod.",
+  "authors": [
+    "MineGame159",
+    "squidoodly",
+    "seasnail"
+  ],
   "contact": {},
   "license": "MIT",
   "icon": "assets/worst/textures/capes/cape.png",
