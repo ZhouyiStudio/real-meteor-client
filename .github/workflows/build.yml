@@ -1,4 +1,3 @@
-```yaml
 name: Build
 
 on:
@@ -32,8 +31,3 @@ jobs:
           name: real-meteor-client
           path: build/libs/*.jar
           if-no-files-found: error
-```
-
-就是：
-
-**Checkout → Java 21 → `./gradlew build` → 上传 `build/libs/*.jar`。**
