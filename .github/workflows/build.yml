@@ -1,18 +1,14 @@
+```yaml
 name: Build
 
 on:
   push:
     branches:
       - main
-  pull_request:
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 jobs:
   build:
-    name: Build Meteor Client
     runs-on: ubuntu-latest
 
     steps:
@@ -24,24 +20,20 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-          cache: gradle
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-
-      - name: Make Gradle executable
-        run: chmod +x ./gradlew
 
       - name: Build
-        run: ./gradlew build --no-daemon
+        run: |
+          chmod +x gradlew
+          ./gradlew build
 
-      - name: Upload build artifacts
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: real-meteor-client
-          path: |
-            build/libs/*.jar
-            **/build/libs/*.jar
+          path: build/libs/*.jar
           if-no-files-found: error
-          retention-days: 30
 ```
+
+就是：
+
+**Checkout → Java 21 → `./gradlew build` → 上传 `build/libs/*.jar`。**
